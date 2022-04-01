@@ -1,6 +1,7 @@
 u: (hello) :[hi hello "what up" sup]
     u1: (you) :good
         u2: (party) :"its lit"
+            u3: (death) : "I die"
     u1: (and) :[one two]
 #comment
 u: (test) :two
