@@ -1,8 +1,8 @@
 class rule:
-    def __init__(self, type, input, output, children):
-        self.type = type
-        self.input = input
-        self.output = output
+    def __init__(self, uLevel, userInput, robotOutput, children):
+        self.uLevel = uLevel
+        self.userInput = userInput
+        self.robotOutput = robotOutput
         self.children = children
 
     def print(self):
