@@ -47,7 +47,11 @@ for line in lines:
                 parsedInput.append(lSplit[1])
             print("PARSED INPUT")
             print(parsedInput)
-            print("\n")
+        else:
+            # Parses into [thing1, thing2, thingx] form user input
+            parsedInput = lSplit[1].split("[")[1].split("]")[0].split(" ")
+            print("PARSED INPUT ELSE STATEMENT")
+            print(parsedInput)
 
         # Handle robot output
         if "[" not in lSplit[2]:
@@ -58,7 +62,11 @@ for line in lines:
                 parsedOutput.append(lSplit[2])
             print("PARSED OUTPUT")
             print(parsedOutput)
-            print("\n")
+        else:
+            # Parses into [thing1, thing2, thingx] form robot ouotput
+            parsedOutput = lSplit[2].split("[")[1].split("]")[0].split(" ")
+            print("PARSED OUTPUT ELSE STATEMENT")
+            print(parsedOutput)
 
         if uLevel == 0:
             # If the uLevel is equal to 0
