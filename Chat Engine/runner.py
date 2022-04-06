@@ -86,7 +86,7 @@ for line in lines:
             print("PARSED OUTPUT")
             print(parsedOutput)
         else:
-            # Parses into [thing1, thing2, thingx] form robot ouotput
+            # Parses into [thing1, thing2, thingx] form robot output
             if "\"" in lSplit[2]:
                 parsedOutput = lSplit[2].split("[")[1].split("]")[0].split(" ")
                 firstQuote = ""
@@ -111,7 +111,7 @@ for line in lines:
             # If the uLevel is equal to 0
             print("uLevel was 0")
             print(uLevel)
-            rules.append(rule(uLevel, userInput, parsedOutput))
+            rules.append(rule(uLevel, parsedInput, parsedOutput))
         else:
             # If the uLevel us not equal to 0
             print("uLevel was NOT 0")
@@ -119,7 +119,7 @@ for line in lines:
             holderRule = rules[len(rules)-1]
             for element in range(1, int(uLevel)):
                 holderRule = holderRule.getLastChild()
-            holderRule.addChild(rule(uLevel, userInput, parsedOutput))
+            holderRule.addChild(rule(uLevel, parsedInput, parsedOutput))
     else:
         # Here if line was a comment
         print("^ Line is a comment\n\n")
@@ -136,31 +136,42 @@ while(True):
     user = input(':')
     if(lastCommand == True):
         for Rule in rules:
-            test1 = str(Rule.userInput.split('(')[1].split(')')[0])
-            test2 = str(user)
-            if(test1 == test2):    
-                randomInput = random.randint(0,len(Rule.robotOutput)-1) 
-                print(Rule.robotOutput[randomInput])
-                lastCommand = Rule
-                foundRule = True
-            
-    else:
-        for Rule in lastCommand.children:
-            if str(Rule.userInput.split('(')[1].split(')')[0]) == str(user):
-                randomInput = random.randint(0,len(Rule.robotOutput)-1) 
-                print(Rule.robotOutput[randomInput])
-                lastCommand = Rule
-                foundRule = True
-        
-        if not foundRule:
-            for Rule in rules:
-                test1 = str(Rule.userInput.split('(')[1].split(')')[0])
-                test2 = str(user)
-                if(test1 == test2):    
+            for inputOptions in Rule.userInput:
+                if(inputOptions.split('(')[1].split(')')[0] == user):
                     randomInput = random.randint(0,len(Rule.robotOutput)-1) 
                     print(Rule.robotOutput[randomInput])
                     lastCommand = Rule
                     foundRule = True
+            
+    else:
+        for Rule in lastCommand.children:
+            # if str(Rule.userInput.split('(')[1].split(')')[0]) == str(user):
+            #     randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+            #     print(Rule.robotOutput[randomInput])
+            #     lastCommand = Rule
+            #     foundRule = True
+            for inputOptions in Rule.userInput:
+                if(inputOptions.split('(')[1].split(')')[0] == user):
+                    randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                    print(Rule.robotOutput[randomInput])
+                    lastCommand = Rule
+                    foundRule = True
+        
+        if not foundRule:
+            for Rule in rules:
+                # test1 = str(Rule.userInput[0].split('(')[1].split(')')[0])
+                # test2 = str(user)
+                # if(test1 == test2):    
+                #     randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                #     print(Rule.robotOutput[randomInput])
+                #     lastCommand = Rule
+                #     foundRule = True
+                for inputOptions in Rule.userInput:
+                    if(inputOptions.split('(')[1].split(')')[0] == user):
+                        randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                        print(Rule.robotOutput[randomInput])
+                        lastCommand = Rule
+                        foundRule = True
         
     if(user == 'exit'):
         print('see ya')
