@@ -72,10 +72,15 @@ for line in lines:
             # If the uLevel is equal to 0
             print("uLevel was 0")
             print(uLevel)
+            rules.append(rule(uLevel, userInput, robotOutput))
         else:
             # If the uLevel us not equal to 0
             print("uLevel was NOT 0")
             print(uLevel)
+            holderRule = rules[len(rules)-1]
+            for element in range(1, int(uLevel)):
+                holderRule = holderRule.getLastChild()
+            holderRule.addChild(rule(uLevel, userInput, robotOutput))
     else:
         # Here if line was a comment
         print("^ Line is a comment\n\n")
@@ -122,5 +127,7 @@ for line in lines:
 ##        
 ##for item in rules:
 ##    item.print()
+for x in range (0, len(rules)):
+    rules[x].printFullArray(x)
 
 file.close()
