@@ -133,13 +133,14 @@ lastCommand = True
 foundRule = False
 
 while(True):
-    user = input('Please enter conversation element:')
+    user = input(':')
     if(lastCommand == True):
         for Rule in rules:
             test1 = str(Rule.userInput.split('(')[1].split(')')[0])
             test2 = str(user)
             if(test1 == test2):    
                 randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                print(Rule.robotOutput[randomInput])
                 lastCommand = Rule
                 foundRule = True
             
@@ -147,16 +148,17 @@ while(True):
         for Rule in lastCommand.children:
             if str(Rule.userInput.split('(')[1].split(')')[0]) == str(user):
                 randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                print(Rule.robotOutput[randomInput])
                 lastCommand = Rule
                 foundRule = True
         
         if not foundRule:
             for Rule in rules:
-                print(Rule.userInput.split('(')[1].split(')')[0] + f'|{user}|')
                 test1 = str(Rule.userInput.split('(')[1].split(')')[0])
                 test2 = str(user)
                 if(test1 == test2):    
                     randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                    print(Rule.robotOutput[randomInput])
                     lastCommand = Rule
                     foundRule = True
         
