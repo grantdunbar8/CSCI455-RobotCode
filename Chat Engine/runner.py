@@ -162,6 +162,10 @@ while(True):
                     lastCommand = Rule
                     foundRule = True
         
+    if(user == 'exit'):
+        print('see ya')
+        break
+
     if not foundRule:
         print('I do not know that phrase. Please enter a new one')
         lastCommand = True
