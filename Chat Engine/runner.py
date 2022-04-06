@@ -42,7 +42,9 @@ for line in lines:
         if "[" not in lSplit[1]:
             parsedInput = []
             if "\"" in lSplit[1]:
-                parsedInput.append(lSplit[1].split("\""))
+                parsedInput = lSplit[2].split("\"")
+                parsedInput.pop(0)
+                parsedInput.pop(len(parsedOutput) - 1)
             else:
                 parsedInput.append(lSplit[1])
             print("PARSED INPUT")
@@ -57,14 +59,31 @@ for line in lines:
         if "[" not in lSplit[2]:
             parsedOutput = []
             if "\"" in lSplit[2]:
-                parsedOutput.append(lSplit[2].split("\""))
+                parsedOutput = lSplit[2].split("\"")
+                parsedOutput.pop(0)
+                parsedOutput.pop(len(parsedOutput) - 1)
             else:
-                parsedOutput.append(lSplit[2])
+                parsedOutput.append(lSplit[2].replace("\n", ""))
             print("PARSED OUTPUT")
             print(parsedOutput)
         else:
             # Parses into [thing1, thing2, thingx] form robot ouotput
-            parsedOutput = lSplit[2].split("[")[1].split("]")[0].split(" ")
+            if "\"" in lSplit[2]:
+                parsedOutput = lSplit[2].split("[")[1].split("]")[0].split(" ")
+                firstQuote = ""
+                tempOutput = []
+                for i in range(len(parsedOutput)):
+                    if "\"" in parsedOutput[i] and firstQuote == "":
+                        firstQuote = parsedOutput[i]
+                    elif "\"" in parsedOutput[i] and not firstQuote == "":
+                        tempString = firstQuote + " " + parsedOutput[i]
+                        tempOutput.append(tempString)
+                    else:
+                        tempOutput.append(parsedOutput[i])
+                parsedOutput = tempOutput
+                        
+            else:
+                parsedOutput = lSplit[2].split("[")[1].split("]")[0].split(" ")
             print("PARSED OUTPUT ELSE STATEMENT")
             print(parsedOutput)
 
@@ -72,62 +91,12 @@ for line in lines:
             # If the uLevel is equal to 0
             print("uLevel was 0")
             print(uLevel)
-            rules.append(rule(uLevel, userInput, robotOutput))
         else:
             # If the uLevel us not equal to 0
             print("uLevel was NOT 0")
             print(uLevel)
-            holderRule = rules[len(rules)-1]
-            for element in range(1, int(uLevel)):
-                holderRule = holderRule.getLastChild()
-            holderRule.addChild(rule(uLevel, userInput, robotOutput))
     else:
         # Here if line was a comment
         print("^ Line is a comment\n\n")
-
-        
-##        if len(type) > 0 and type.split('u')[1] < line.split(':')[0].replace(' ', '').split('u')[1]:
-##            print('CHILD')
-##        type = line.split(':')[0].replace(' ', '')
-##        input = line.split(':')[1].split('(')[1].split(')')[0]
-##        print(len(input))
-##        if len(line.split(':')) > 2:
-##            output = []
-##            if '[' not in line.split(':')[2]:
-##                if '\"' in line.split(':')[2]:
-##                    output.append(line.split(':')[2].split('\"')[1])
-##                else:
-##                    output.append(line.split(':')[2])
-##            else:
-##                outputLine = line.split(':')[2].split('[')[1].split(']')[0]
-##                print("LINE HERE: " + outputLine)
-##                isQuote = FALSE
-##                strBuilder = ''
-##                for element in range(0, len(outputLine)):
-##                    print(outputLine[element])
-##                    if outputLine[element] != ' ' and outputLine[element] != '\"' and isQuote == FALSE:
-##                        strBuilder += outputLine[element]
-##                    elif outputLine[element] == ' ' and isQuote == FALSE and len(strBuilder) > 0:
-##                        output.append(strBuilder)
-##                        print("BUILD :  " + strBuilder)
-##                        strBuilder = ''
-##                    elif outputLine[element] == '\"' and isQuote == FALSE:
-##                        isQuote = TRUE
-##                    elif outputLine[element] == '\"' and isQuote == TRUE:
-##                        output.append(strBuilder)
-##                        strBuilder = ''
-##                        isQuote = FALSE
-##                    elif outputLine[element] != '\"' and isQuote == TRUE:
-##                        strBuilder += outputLine[element]
-##                output.append(strBuilder)
-##            rules.append(rule(type, input, output, 'lit'))
-##        else:
-##            print('ERROR in this line')
-##        
-##        
-##for item in rules:
-##    item.print()
-for x in range (0, len(rules)):
-    rules[x].printFullArray(x)
 
 file.close()
