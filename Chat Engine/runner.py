@@ -51,7 +51,23 @@ for line in lines:
             print(parsedInput)
         else:
             # Parses into [thing1, thing2, thingx] form user input
-            parsedInput = lSplit[1].split("[")[1].split("]")[0].split(" ")
+            if "\"" in lSplit[1]:
+                parsedInput = lSplit[2].split("[")[1].split("]")[0].split(" ")
+                firstQuote = ""
+                tempInput = []
+                for i in range(len(parsedInput)):
+                    if "\"" in parsedInput[i] and firstQuote == "":
+                        firstQuote = parsedInput[i]
+                    elif "\"" in parsedInput[i] and not firstQuote == "":
+                        tempString = firstQuote + " " + parsedInput[i]
+                        tempString = tempString.replace("\"", "")
+                        tempOutput.append(tempString)
+                    else:
+                        tempOutput.append(parsedInput[i])
+                parsedInput = tempOutput
+                
+            else:
+                parsedInput = lSplit[1].split("[")[1].split("]")[0].split(" ")
             print("PARSED INPUT ELSE STATEMENT")
             print(parsedInput)
 
@@ -77,6 +93,7 @@ for line in lines:
                         firstQuote = parsedOutput[i]
                     elif "\"" in parsedOutput[i] and not firstQuote == "":
                         tempString = firstQuote + " " + parsedOutput[i]
+                        tempString = tempString.replace("\"", "")
                         tempOutput.append(tempString)
                     else:
                         tempOutput.append(parsedOutput[i])
