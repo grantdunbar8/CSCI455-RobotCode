@@ -1,4 +1,5 @@
 from rule import *
+import random
 
 file = open('testing1.txt', 'r')
 
@@ -11,6 +12,8 @@ lSplit = []
 uLevel = 0
 userInput = ""
 robotOutput = ""
+
+print('*******PARSING HAS STARTED*********')
 
 for line in lines:
     print("\n\n\n\nLINE: " + line)
@@ -108,12 +111,57 @@ for line in lines:
             # If the uLevel is equal to 0
             print("uLevel was 0")
             print(uLevel)
+            rules.append(rule(uLevel, userInput, parsedOutput))
         else:
             # If the uLevel us not equal to 0
             print("uLevel was NOT 0")
             print(uLevel)
+            holderRule = rules[len(rules)-1]
+            for element in range(1, int(uLevel)):
+                holderRule = holderRule.getLastChild()
+            holderRule.addChild(rule(uLevel, userInput, parsedOutput))
     else:
         # Here if line was a comment
         print("^ Line is a comment\n\n")
 
 file.close()
+for x in range (0, len(rules)):
+    rules[x].printFullArray(x)
+print('Robot is listening')
+
+lastCommand = True
+foundRule = False
+
+while(True):
+    user = input('Please enter conversation element:')
+    if(lastCommand == True):
+        for Rule in rules:
+            test1 = str(Rule.userInput.split('(')[1].split(')')[0])
+            test2 = str(user)
+            if(test1 == test2):    
+                randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                lastCommand = Rule
+                foundRule = True
+            
+    else:
+        for Rule in lastCommand.children:
+            if str(Rule.userInput.split('(')[1].split(')')[0]) == str(user):
+                randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                lastCommand = Rule
+                foundRule = True
+        
+        if not foundRule:
+            for Rule in rules:
+                print(Rule.userInput.split('(')[1].split(')')[0] + f'|{user}|')
+                test1 = str(Rule.userInput.split('(')[1].split(')')[0])
+                test2 = str(user)
+                if(test1 == test2):    
+                    randomInput = random.randint(0,len(Rule.robotOutput)-1) 
+                    lastCommand = Rule
+                    foundRule = True
+        
+    if not foundRule:
+        print('I do not know that phrase. Please enter a new one')
+        lastCommand = True
+        
+    foundRule = False   
