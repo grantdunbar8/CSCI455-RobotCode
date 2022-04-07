@@ -42,6 +42,8 @@ for line in lines:
             uLevel = uSplit[1]
 
         # Handle user input
+        lSplit[1] = lSplit[1].replace("(", "")
+        lSplit[1] = lSplit[1].replace(")", "")
         if "[" not in lSplit[1]:
             parsedInput = []
             if "\"" in lSplit[1]:
