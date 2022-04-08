@@ -100,7 +100,6 @@ for line in lines:
                     
                 else:
                     parsedInput = lSplit[1].split("[")[1].split("]")[0].split(" ")
-                    
                 #print("PARSED INPUT ELSE STATEMENT")
                 #print(parsedInput)
 
@@ -139,6 +138,8 @@ for line in lines:
                     for i in range(len(parsedOutput)):
                         if "\"" in parsedOutput[i] and firstQuote == "":
                             firstQuote = parsedOutput[i]
+                        elif "\"" not in parsedOutput[i] and not firstQuote == "":
+                            firstQuote += " " + parsedOutput[i]
                         elif "\"" in parsedOutput[i] and not firstQuote == "":
                             tempString = firstQuote + " " + parsedOutput[i]
                             tempString = tempString.replace("\"", "")
