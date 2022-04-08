@@ -1,7 +1,7 @@
 from rule import *
 import random
 
-file = open('testing1.txt', 'r')
+file = open('testing2.txt', 'r')
 
 lines = file.readlines()
 
@@ -185,6 +185,7 @@ while(True):
         for Rule in rules:
             for inputOptions in Rule.userInput: 
                 option = inputOptions
+                user.replace("\"", "")
                 #if(inputOptions.split('(')[1].split(')')[0] == user):
                 if(option == user):
                     randomInput = random.randint(0,len(Rule.robotOutput)-1)
@@ -267,6 +268,7 @@ while(True):
             #     foundRule = True
             for inputOptions in Rule.userInput:
                 option = inputOptions
+                user.replace("\"", "")
                 #if(inputOptions.split('(')[1].split(')')[0] == user):
                 if(option == user):
                     randomInput = random.randint(0,len(Rule.robotOutput)-1) 
@@ -340,6 +342,7 @@ while(True):
                 #     foundRule = True
                 for inputOptions in Rule.userInput:
                     option = inputOptions
+                    user.replace("\"", "")
                     #if(inputOptions.split('(')[1].split(')')[0] == user):
                     if(option == user):
                         randomInput = random.randint(0,len(Rule.robotOutput)-1) 
