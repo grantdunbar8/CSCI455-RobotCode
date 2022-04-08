@@ -88,6 +88,8 @@ for line in lines:
                     for i in range(len(parsedInput)):
                         if "\"" in parsedInput[i] and firstQuote == "":
                             firstQuote = parsedInput[i]
+                        elif "\"" not in parsedInput[i] and not firstQuote == "":
+                            firstQuote += ' ' + parsedInput[i]
                         elif "\"" in parsedInput[i] and not firstQuote == "":
                             tempString = firstQuote + " " + parsedInput[i]
                             tempString = tempString.replace("\"", "")

@@ -1,19 +1,18 @@
-u: (hello) :[hi hello "what up" sup]
-    u1: (you) :good
-        u2: (party) :"its lit"
-    u1: (and) :[one two]
-#comment
-u: (test) :two
-    u1: (third) :three
-~grettings:[butt ass "go away"]
-u:(~greetings):[run hide "lock it" down]
-    u1:(try) :~greetings
-u:(my name is _): hello $name
-    u1:(I am _ years old):You are $age years old
-    u1:(do you remember my name) : Yes
-    #comments are ignored
-        u2:(what is it):$name
-            u3:(you are very smart):I know
-u:(what is my name) : your name is $name
+#comments are ignored
+~choices: [choice robot "I am a robot"]
+u:(~greetings):[hi hello "what up" sup]
+    u1:(second level):good
+	u1:(different):[one two]
+u:(different):Should not be here
+u:(second test):second test worked
+    u1:(third test):~greetings
+u:(my name is _): hello $var
+	u1:(I am _ years old):You are $age years old
+	u1:(do you remember my name) : Yes
+	#comments are ignored
+		u2:(what is it):$var
+			u3:(level three test):level three worked
+				u4:(level four test):level 4 worked
+u:(fourth test) : fourth level should print $var
 u: (how old am I) : you are $age
-u:(this is an error) error here
+u:(colon is missing) error should have been detected in parsing
