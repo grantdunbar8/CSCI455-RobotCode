@@ -1,8 +1,10 @@
 import time
 import speech_recognition as sr
+from Speech import *
 
 class Methods:
     usb = None
+    speechEngine = TextToSpeech()
 
     def __init__(self, usb):
         self.usb = usb
@@ -21,8 +23,9 @@ class Methods:
         else:
             time.sleep(0.25)
 
-    def speak(outputString):
-        print(outputString)
+    def speak(self, outputString):
+        self.speechEngine.ConvertTextToSpeech(outputString)
+        self.speechEngine.PlayTextToSpeech
 
     def waitForCommand(inputSpring):
         speech = True
