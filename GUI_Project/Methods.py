@@ -1,9 +1,8 @@
-import time, sys
-from Robot import *
+import time
+import speech_recognition as sr
 
 class Methods:
     usb = None
-    robot = ROBOT()
 
     def __init__(self, usb):
         self.usb = usb
@@ -26,4 +25,20 @@ class Methods:
         print(outputString)
 
     def waitForCommand(inputSpring):
-        print('waiting for ' + inputSpring)
+        speech = True
+        while speech:
+            with sr.Microphone() as source:
+                r= sr.Recognizer()
+                r.adjust_for_ambient_noise(source)
+                r.dyanmic_energythreshhold = 3000
+                
+                try:
+                    print("listening")
+                    audio = r.listen(source)            
+                    print("Got audio")
+                    word = r.recognize_google(audio)
+                    print(word)
+                    if inputSpring in word:
+                        speech = False
+                except sr.UnknownValueError:
+                    print("Don't knoe that werd")
