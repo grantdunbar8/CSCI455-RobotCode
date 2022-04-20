@@ -11,28 +11,28 @@ class Command:
         exeType = inType
         
         # Angle for rotation or movement
-        exeAngle = inDegrees
+        exeAngle = inAngle
 
-    def ExecuteCommand():
+    def ExecuteCommand(self):
         # exeType can be integers or strings or any type of variable
         # whatever works best.
-        if exeType == 1:
+        if self.exeType == 1:
             print("TYPE: move forward")
-        elif exeType == 2:
+        elif self.exeType == 2:
             print("TYPE: move back")
-        elif exeType == 3:
+        elif self.exeType == 3:
             print("TYPE: turn right")
-        elif exeType == 4:
+        elif self.exeType == 4:
             print("TYPE: turn left")
-        elif exeType == 5:
+        elif self.exeType == 5:
             print("TYPE: head up")
-        elif exeType == 6:
+        elif self.exeType == 6:
             print("TYPE: head down")
-        elif exeType == 7:
+        elif self.exeType == 7:
             print("TYPE: head left")
-        elif exeType == 8:
+        elif self.exeType == 8:
             print("TYPE: head right")
-        elif exeType == 9:
+        elif self.exeType == 9:
             print("TYPE: rotate right")
-        elif exeType == 10:
+        elif self.exeType == 10:
             print("TYPE: rotate left")
