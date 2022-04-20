@@ -1,38 +1,67 @@
+from Methods import *
+import serial
 class Command:
     exeDuration = 0
-    exeType = 0
+    exeType = ''
     exeAngle = 0
+    methods = Methods(serial.Serial('/dev/ttyACM0'))
     
     def __init__(self, inTime, inType, inAngle):
         # Duration the movement will be executed
-        exeTime = inTime
+        self.exeTime = inTime
         
         # Type of motion that will be executed
-        exeType = inType
+        self.exeType = inType
         
-        # Angle for rotation or movement
-        exeAngle = inAngle
+        # Angle for rotation or movement or string
+        self.exeAngle = inAngle
 
     def ExecuteCommand(self):
         # exeType can be integers or strings or any type of variable
         # whatever works best.
-        if self.exeType == 1:
+        print(self.exeType)
+        if len(self.exeType) == len('move forward') and self.exeType == 'move forward':
             print("TYPE: move forward")
-        elif self.exeType == 2:
+            self.methods.positionMotor(0, 6000, 0)
+            self.methods.positionMotor(0, 4500, self.exeDuration)
+            self.methods.positionMotor(0, 6000, 0)
+        elif len(self.exeType) == len('move backward') and self.exeType == 'move backward':
             print("TYPE: move back")
-        elif self.exeType == 3:
+            self.methods.positionMotor(0, 6000, 0)
+            self.methods.positionMotor(0, 7500, self.exeDuration)
+            self.methods.positionMotor(0, 6000, 0)
+        elif len(self.exeType) == len('turn right') and self.exeType == 'turn right':
             print("TYPE: turn right")
-        elif self.exeType == 4:
+            self.methods.positionMotor(0, 6000, 0)
+            self.methods.positionMotor(1, 4900, 0)
+        elif len(self.exeType) == len('turn left') and self.exeType == 'turn left':
             print("TYPE: turn left")
-        elif self.exeType == 5:
+            self.methods.positionMotor(0, 6000, 0)
+            self.methods.positionMotor(1, 7150, 0)
+        elif len(self.exeType) == len('head up') and self.exeType == 'head up':
             print("TYPE: head up")
-        elif self.exeType == 6:
+            self.methods.positionMotor(4, self.exeAngle, 0)
+        elif len(self.exeType) == len('head down') and self.exeType == 'head down':
             print("TYPE: head down")
-        elif self.exeType == 7:
+            self.methods.positionMotor(4, self.exeAngle, 0)
+        elif len(self.exeType) == len('head left') and self.exeType == 'head left':
             print("TYPE: head left")
-        elif self.exeType == 8:
+            self.methods.positionMotor(3, self.exeAngle, 0)
+        elif len(self.exeType) == len('head right') and self.exeType == 'head right':
             print("TYPE: head right")
-        elif self.exeType == 9:
-            print("TYPE: rotate right")
-        elif self.exeType == 10:
-            print("TYPE: rotate left")
+            self.methods.positionMotor(3, self.exeAngle, 0)
+        elif len(self.exeType) == len('waist right') and self.exeType == 'waist right':
+            print("TYPE: waist right")
+            self.methods.positionMotor(2, self.exeAngle, 0)
+        elif len(self.exeType) == len('waist left') and self.exeType == 'waist left':
+            print("TYPE: waist left")
+            self.methods.positionMotor(2, self.exeAngle, 0)
+        elif len(self.exeType) == len('pause') and self.exeType == 'pause':
+            print("TYPE: pause")
+            self.methods.positionMotor(100, 0, self.exeDuration)
+        elif len(self.exeType) == len('speak') and self.exeType == 'speak':
+            print('TYPE: speak')
+            self.methods.speak(self.exeAngle)
+        elif len(self.exeType) == len('wait for') and self.exeType == 'wait for':
+            print('TYPE: wait for ' + self.exeAngle)
+            self.methods.waitForCommand(self.exeAngle)
