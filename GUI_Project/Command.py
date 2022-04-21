@@ -4,7 +4,7 @@ class Command:
     exeDuration = 0
     exeType = ''
     exeAngle = 0
-    methods = Methods(serial.Serial('/dev/ttyACM0'))
+    methods = ''
     
     def __init__(self, inTime, inType, inAngle):
         # Duration the movement will be executed
@@ -15,6 +15,11 @@ class Command:
         
         # Angle for rotation or movement or string
         self.exeAngle = inAngle
+        usb = serial.Serial('/dev/ttyACM0')
+        print (usb.name)
+        print(usb.baudrate)
+        self.methods = Methods(usb)
+
 
     def ExecuteCommand(self):
         # exeType can be integers or strings or any type of variable

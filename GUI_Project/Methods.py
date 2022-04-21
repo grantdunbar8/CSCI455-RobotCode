@@ -1,4 +1,5 @@
 import time
+from turtle import pos
 import speech_recognition as sr
 from Speech import *
 
@@ -11,12 +12,17 @@ class Methods:
 
     #what is actually running the command
     def positionMotor(self, motorNum, position, duration):
+        print('Motor num: ' + str(motorNum))
+        print('Position: ' + str(position))
+        print('Duration: ' + str(duration))
         if motorNum != 100:
             lsb = position &0x7F
             msb = (position >> 7) & 0x7F
             motor = chr(0x0 + motorNum)
             cmd = chr(0xaa) + chr(0xC) + chr(0x04) + motor + chr(lsb) + chr(msb)
             self.usb.write(cmd.encode('utf-8'))
+            print(cmd.encode('utf-8'))
+
         
         if duration != 0:
             time.sleep(duration)
@@ -25,9 +31,9 @@ class Methods:
 
     def speak(self, outputString):
         self.speechEngine.ConvertTextToSpeech(outputString)
-        self.speechEngine.PlayTextToSpeech
+        print(outputString + " was just said")
 
-    def waitForCommand(inputSpring):
+    def waitForCommand(self, inputSpring):
         speech = True
         while speech:
             with sr.Microphone() as source:

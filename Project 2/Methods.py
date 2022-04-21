@@ -15,6 +15,7 @@ class Methods:
         motor = chr(0x0 + motorNum)
         cmd = chr(0xaa) + chr(0xC) + chr(0x04) + motor + chr(lsb) + chr(msb)
         self.usb.write(cmd.encode('utf-8'))
+        print(cmd.encode('utf-8'))
         time.sleep(0.25)
 
     #move head left
