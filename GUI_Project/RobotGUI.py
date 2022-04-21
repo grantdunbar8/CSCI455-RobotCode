@@ -14,8 +14,8 @@ from kivy.properties import NumericProperty
 from kivy.uix.label import Label
 
 
-def on_slider_val(self, instance, val):
-        self.label.text = str(val)
+# def on_slider_val(self, instance, val):
+#         self.label.text = str(val)
 
     
 KV = '''
@@ -25,66 +25,6 @@ BoxLayout:
     Label:
         text: str(s1.value)
 '''
-# slider = Slider(
-#     min = 0, 
-#     max = 10, 
-#     orientation = 'horizontal',
-#     value_track = True,
-#     value_track_color = [1, 0, 0, 1],
-#     step = 1
-    
-#     )
-# label1 = Label()
-# popupButton = Button(text = "Set Value")
-# testVal = ''
-
-# slider.bind(value=OnSliderValueChange)
-# box = BoxLayout()
-# box.add_widget(slider)
-# box.add_widget(label1)
-# box.add_widget(popupButton)
-
-# popup = Popup(title = "ROBOT MOVE WINDOW", content = box, size_hint = (None, None), size = (400, 100))
-# popupButton.bind(on_press = popup.dismiss)
-
-
-
-# def makeDropDown(self, dropdown, popup):
-#         for i in range(7):
-#             if i == 0:       
-#                 ddButton = Button(text = "Robot Move", size_hint_y = None)
-#                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
-#                 ddButton.bind(on_release = popup.open)
-#                 dropdown.add_widget(ddButton)
-#                 self.selectedButton = 'Robot Move'
-#                 print("DIE BITCH")
-#                 print("BUT: " + self.selectedButton)
-#             elif i == 1:
-#                 ddButton = Button(text = "Robot Turn", size_hint_y = None)
-#                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
-
-#                 dropdown.add_widget(ddButton)
-#             elif i == 2:
-#                 ddButton = Button(text = "Head Tilt", size_hint_y = None)
-#                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
-#                 dropdown.add_widget(ddButton)
-#             elif i == 3:
-#                 ddButton = Button(text = "Head Pan", size_hint_y = None)
-#                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
-#                 dropdown.add_widget(ddButton)
-#             elif i == 4:
-#                 ddButton = Button(text = "Waist Turn", size_hint_y = None)
-#                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
-#                 dropdown.add_widget(ddButton)
-#             elif i == 5:
-#                 ddButton = Button(text = "Human Talk", size_hint_y = None)
-#                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
-#                 dropdown.add_widget(ddButton)
-#             elif i == 6:
-#                 ddButton = Button(text = "Robot Talk", size_hint_y = None)
-#                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
-#                 dropdown.add_widget(ddButton)
-
 
 
 class MyApp(App):
@@ -128,7 +68,6 @@ class MyApp(App):
         if ('seconds' not in self.button1.text) and ('Action1' in self.button1.text):
             newText = self.button1.text + " for: " + str(self.testVal) + " seconds"
             self.button1.text = newText
-            print("NEW " + newText)
         elif ('seconds' not in self.button2.text) and ('Action2' in self.button2.text):
             newText = self.button2.text + " for: " + str(self.testVal) + " seconds"
             self.button2.text = newText
@@ -153,8 +92,6 @@ class MyApp(App):
 
     def build(self):
 
-
-
         self.window = GridLayout(
             spacing = 10,
             padding = [20, 50, 20, 50],
@@ -165,35 +102,6 @@ class MyApp(App):
         self.window.rows = 5
         Window.size = (800, 480)
 
-        # dropdown1 = DropDown()
-        # dropdown2 = DropDown()
-        # dropdown3 = DropDown()
-        # dropdown4 = DropDown()
-        # dropdown5 = DropDown()
-        # dropdown6 = DropDown()
-        # dropdown7 = DropDown()
-        # dropdown8 = DropDown()
-
-        # ddButton1 = Button(text = "Robot Move", size_hint_y = None)
-        # ddButton1.bind(on_release = lambda ddButton1: dropdown1.select(ddButton1.text))
-        # #ddButton1.bind(on_release = lambda ddButton1: dropdown2.select(ddButton1.text))
-
-        # ddButton2 = Button(text = "Robot Turn", size_hint_y = None)
-        # ddButton2.bind(on_release = lambda ddButton2: dropdown1.select(ddButton2.text))
-        # #ddButton2.bind(on_release = lambda ddButton2: dropdown2.select(ddButton2.text))
-
-        # ddButton3 = Button(text = "Head Tilt", size_hint_y = None)
-        # ddButton4 = Button(text = "Head Pan", size_hint_y = None)
-        # ddButton5 = Button(text = "Waist Turn", size_hint_y = None)
-        # ddButton6 = Button(text = "Human Talk", size_hint_y = None)
-        # ddButton7 = Button(text = "Robot Talk", size_hint_y = None)
-
-        # dropdown1.add_widget(ddButton1)
-        # dropdown1.add_widget(ddButton2)
-        # dropdown2.add_widget(ddButton1)
-        # dropdown2.add_widget(ddButton2)
-
-        #dropdown2.add_widget(ddButton2)
         dropdown = DropDown()
         dropdown2 = DropDown()
         dropdown3 = DropDown()
@@ -203,12 +111,9 @@ class MyApp(App):
         dropdown7 = DropDown()
         dropdown8 = DropDown()
 
-  
-
-
         self.testVal = ''
         def OnSliderValueChange(instance, value):
-            label1.text = str(value) + " seconds"
+            #label1.text = str(value) + " seconds"
             self.testVal = value
             print(value)
             print("HERE " + str(self.testVal))
@@ -224,14 +129,14 @@ class MyApp(App):
             step = 1
             
             )
-        label1 = Label()
+        #label1 = Label()
         popupButton = Button(text = "Set Value")
         
 
         slider.bind(value=OnSliderValueChange)
         box = BoxLayout()
         box.add_widget(slider)
-        box.add_widget(label1)
+        #box.add_widget(label1)
         box.add_widget(popupButton)
 
         popup = Popup(title = "ROBOT MOVE WINDOW", content = box, size_hint = (None, None), size = (400, 100))
@@ -249,7 +154,6 @@ class MyApp(App):
         self.makeDropDown(dropdown7, popup)
         self.makeDropDown(dropdown8, popup)
 
-     
 
         self.button1 = Button(text = "Action 1")
         self.button1.bind(on_release=dropdown.open)
@@ -268,9 +172,7 @@ class MyApp(App):
         self.button8 = Button(text = "Action 8")
         self.button8.bind(on_release=dropdown8.open)
 
-  
-
-        
+          
 
         dropdown.bind(on_select=lambda instance, x: setattr(self.button1, 'text', "Action1: " + x))
         dropdown2.bind(on_select=lambda instance, x: setattr(self.button2, 'text', "Action2: " +x))
@@ -280,9 +182,6 @@ class MyApp(App):
         dropdown6.bind(on_select=lambda instance, x: setattr(self.button6, 'text', "Action6: " +x))
         dropdown7.bind(on_select=lambda instance, x: setattr(self.button7, 'text', "Action7: " +x))
         dropdown8.bind(on_select=lambda instance, x: setattr(self.button8, 'text', "Action8: " +x))
-
-        #dropdown2.bind(on_select=lambda instance, x: setattr(self.button2, 'text', x))
-
 
 
         red = [1, 0, 0, 1] 
@@ -307,9 +206,6 @@ class MyApp(App):
             height = 50,
             background_color = red
             )
-
-
-
 
 
         self.window.add_widget(self.button1)
