@@ -12,6 +12,7 @@ from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import NumericProperty
 from kivy.uix.label import Label
+from Command import *
 
 
 # def on_slider_val(self, instance, val):
@@ -261,6 +262,24 @@ class MyApp(App):
         blue = [0, 0.5, 1, 1] 
         purple = [1, 0, 1, 1] 
 
+        
+        def parseButtons(event):
+            commandList = []
+            commandList.append(Command(self.button1.text.split(':')[1], self.button1.text.split(':')[2].replace(' ', '').split('.')[0]))
+            commandList.append(Command(self.button2.text.split(':')[1], self.button2.text.split(':')[2].replace(' ', '').split('.')[0]))
+            commandList.append(Command(self.button3.text.split(':')[1], self.button3.text.split(':')[2].replace(' ', '').split('.')[0]))
+            commandList.append(Command(self.button4.text.split(':')[1], self.button4.text.split(':')[2].replace(' ', '').split('.')[0]))
+            commandList.append(Command(self.button5.text.split(':')[1], self.button5.text.split(':')[2].replace(' ', '').split('.')[0]))
+            commandList.append(Command(self.button6.text.split(':')[1], self.button6.text.split(':')[2].replace(' ', '').split('.')[0]))
+            commandList.append(Command(self.button7.text.split(':')[1], self.button7.text.split(':')[2].replace(' ', '').split('.')[0]))
+            commandList.append(Command(self.button8.text.split(':')[1], self.button8.text.split(':')[2].replace(' ', '').split('.')[0]))
+
+            print(self.button1.text.split(':')[1])
+            print(self.button1.text.split(':')[2].replace(' ', '').split('.')[0])
+            print('here')
+            for each in commandList:
+                each.ExecuteCommand()
+        
         self.button9 = Button(
             text = "RUN",
             size_hint_x = None,
@@ -270,14 +289,27 @@ class MyApp(App):
             pos_hint = {"center_x":0.3},
             background_color = blue
             )
+        self.button9.bind(on_release=parseButtons)
+
+        def reload(event):
+            self.button1.text = "Action 1"
+            self.button2.text = "Action 2"
+            self.button3.text = "Action 3"
+            self.button4.text = "Action 4"
+            self.button5.text = "Action 5"
+            self.button6.text = "Action 6"
+            self.button7.text = "Action 7"
+            self.button8.text = "Action 8"
+
         self.button10 = Button(
-            text = "EXIT",
+            text = "CLEAR",
             size_hint_x = None,
             size_hint_y = None,
             width = 100,
             height = 50,
             background_color = red
             )
+        self.button10.bind(on_release = reload)
 
 
         self.window.add_widget(self.button1)
