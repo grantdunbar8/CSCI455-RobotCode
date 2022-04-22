@@ -59,11 +59,11 @@ class MyApp(App):
                 ddButton.bind(on_release = popup2.open)
                 dropdown.add_widget(ddButton)
             elif i == 5:
-                ddButton = Button(text = "Human Talk", size_hint_y = None)
+                ddButton = Button(text = "Human Talk: Hello", size_hint_y = None)
                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
                 dropdown.add_widget(ddButton)
             elif i == 6:
-                ddButton = Button(text = "Robot Talk", size_hint_y = None)
+                ddButton = Button(text = "Robot Talk: Hello World", size_hint_y = None)
                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
                 dropdown.add_widget(ddButton)
 
@@ -284,14 +284,45 @@ class MyApp(App):
         
         def parseButtons(event):
             commandList = []
-            commandList.append(Command(self.button1.text.split(':')[1], self.button1.text.split(':')[2].split('.')[0].split(' ')[1]))
-            commandList.append(Command(self.button2.text.split(':')[1], self.button2.text.split(':')[2].split('.')[0].split(' ')[1]))
-            commandList.append(Command(self.button3.text.split(':')[1], self.button3.text.split(':')[2].split('.')[0].split(' ')[1]))
-            commandList.append(Command(self.button4.text.split(':')[1], self.button4.text.split(':')[2].split('.')[0].split(' ')[1]))
-            commandList.append(Command(self.button5.text.split(':')[1], self.button5.text.split(':')[2].split('.')[0].split(' ')[1]))
-            commandList.append(Command(self.button6.text.split(':')[1], self.button6.text.split(':')[2].split('.')[0].split(' ')[1]))
-            commandList.append(Command(self.button7.text.split(':')[1], self.button7.text.split(':')[2].split('.')[0].split(' ')[1]))
-            commandList.append(Command(self.button8.text.split(':')[1], self.button8.text.split(':')[2].split('.')[0].split(' ')[1]))
+            if not 'Talk' in self.button1.text:
+                commandList.append(Command(self.button1.text.split(':')[1], self.button1.text.split(':')[2].split('.')[0].split(' ')[1]))
+            else:
+                commandList.append(Command(self.button1.text.split(':')[1], self.button1.text.split(':')[2].split('.')[0]))
+
+            if not 'Talk' in self.button2.text:
+                commandList.append(Command(self.button2.text.split(':')[1], self.button2.text.split(':')[2].split('.')[0].split(' ')[1]))
+            else:
+                commandList.append(Command(self.button2.text.split(':')[1], self.button2.text.split(':')[2].split('.')[0]))
+
+            if not 'Talk' in self.button3.text:
+                commandList.append(Command(self.button3.text.split(':')[1], self.button3.text.split(':')[2].split('.')[0].split(' ')[1]))
+            else:
+                commandList.append(Command(self.button3.text.split(':')[1], self.button3.text.split(':')[2].split('.')[0]))
+
+            if not 'Talk' in self.button4.text:
+                commandList.append(Command(self.button4.text.split(':')[1], self.button4.text.split(':')[2].split('.')[0].split(' ')[1]))
+            else:
+                commandList.append(Command(self.button4.text.split(':')[1], self.button4.text.split(':')[2].split('.')[0]))
+            
+            if not 'Talk' in self.button5.text:
+                commandList.append(Command(self.button5.text.split(':')[1], self.button5.text.split(':')[2].split('.')[0].split(' ')[1]))
+            else:
+                commandList.append(Command(self.button5.text.split(':')[1], self.button5.text.split(':')[2].split('.')[0]))
+
+            if not 'Talk' in self.button6.text:
+                commandList.append(Command(self.button6.text.split(':')[1], self.button6.text.split(':')[2].split('.')[0].split(' ')[1]))
+            else:
+                commandList.append(Command(self.button6.text.split(':')[1], self.button6.text.split(':')[2].split('.')[0]))
+
+            if not 'Talk' in self.button7.text:
+               commandList.append(Command(self.button7.text.split(':')[1], self.button7.text.split(':')[2].split('.')[0].split(' ')[1]))
+            else:
+                commandList.append(Command(self.button7.text.split(':')[1], self.button7.text.split(':')[2].split('.')[0]))
+
+            if not 'Talk' in self.button8.text:
+                commandList.append(Command(self.button8.text.split(':')[1], self.button8.text.split(':')[2].split('.')[0].split(' ')[1]))
+            else:
+                commandList.append(Command(self.button8.text.split(':')[1], self.button8.text.split(':')[2].split('.')[0]))
 
             print(self.button1.text.split(':')[1])
             print(self.button1.text.split(':')[2].split('.')[0].split(' ')[1])
