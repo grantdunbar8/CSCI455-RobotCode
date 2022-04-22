@@ -1,5 +1,6 @@
 
 
+from cgitb import text
 import kivy
 kivy.require('1.0.6')  # replace with your current kivy version !
 
@@ -11,6 +12,7 @@ from kivy.uix.dropdown import DropDown
 from kivy.uix.slider import Slider
 from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import NumericProperty
 from kivy.uix.label import Label
 from Command import *
@@ -281,8 +283,47 @@ class MyApp(App):
         blue = [0, 0.5, 1, 1] 
         purple = [1, 0, 1, 1] 
 
+        def showPopup():
+            run = self.button9
+            clear = self.button10
+
+            self.button1.opacity = 0
+            self.button2.opacity = 0
+            self.button3.opacity = 0
+            self.button4.opacity = 0
+            self.button5.opacity = 0
+            self.button6.opacity = 0
+            self.button7.opacity = 0
+            self.button8.opacity = 0
+            self.button9.text = ''
+            self.button10.text = ''
+
+            animation1 = Animation(pos =(0, 0), t ='out_bounce')
+            animation1 += Animation(pos =(0, 330), t ='out_bounce')
+            animation1 += Animation(pos =(650, 330), t ='out_bounce')
+            animation1 += Animation(pos =(650, 0), t ='out_bounce')
+            animation1 += Animation(pos =(0, 0), t ='out_bounce')
+            animation1 += Animation(pos =(0, 330), t ='out_bounce')
+            animation1 += Animation(pos =(650, 330), t ='out_bounce')
+            animation1 += Animation(pos =(650, 0), t ='out_bounce')
+            animation1 &= Animation(size =(150, 150))
+            animation1 += Animation(pos =(0, 0), t ='out_bounce')
+            
+            animation2 = Animation(pos =(650, 0), t ='out_bounce')
+            animation2 += Animation(pos =(650, 330), t ='out_bounce')
+            animation2 += Animation(pos =(0, 330), t ='out_bounce')
+            animation2 += Animation(pos =(0, 0), t ='out_bounce')
+            animation2 &= Animation(size =(150, 150))
+            animation2 += Animation(pos =(650, 0), t ='out_bounce')
+
+            
+            animation1.repeat = True
+            animation2.repeat = True
+            animation1.start(run)
+            animation2.start(clear)
         
         def parseButtons(event):
+            showPopup()
             commandList = []
             if not 'Talk' in self.button1.text:
                 commandList.append(Command(self.button1.text.split(':')[1], self.button1.text.split(':')[2].split('.')[0].split(' ')[1]))
