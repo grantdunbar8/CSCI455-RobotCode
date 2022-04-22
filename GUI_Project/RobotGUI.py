@@ -1,6 +1,7 @@
 
 
 from cgitb import text
+import threading
 import kivy
 kivy.require('1.0.6')  # replace with your current kivy version !
 
@@ -15,7 +16,10 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import NumericProperty
 from kivy.uix.label import Label
+from kivy.clock import Clock
+import time
 from Command import *
+from kivy.animation import Animation
 
 
 # def on_slider_val(self, instance, val):
@@ -61,7 +65,7 @@ class MyApp(App):
                 ddButton.bind(on_release = popup2.open)
                 dropdown.add_widget(ddButton)
             elif i == 5:
-                ddButton = Button(text = "Human Talk: Hello", size_hint_y = None)
+                ddButton = Button(text = "Human Talk: hello", size_hint_y = None)
                 ddButton.bind(on_release = lambda ddButton: dropdown.select(ddButton.text))
                 dropdown.add_widget(ddButton)
             elif i == 6:
@@ -165,6 +169,7 @@ class MyApp(App):
         self.window.cols = 2
         self.window.rows = 5
         Window.size = (800, 480)
+        Window.fullscreen = True
 
         dropdown = DropDown()
         dropdown2 = DropDown()
@@ -283,47 +288,7 @@ class MyApp(App):
         blue = [0, 0.5, 1, 1] 
         purple = [1, 0, 1, 1] 
 
-        def showPopup():
-            run = self.button9
-            clear = self.button10
-
-            self.button1.opacity = 0
-            self.button2.opacity = 0
-            self.button3.opacity = 0
-            self.button4.opacity = 0
-            self.button5.opacity = 0
-            self.button6.opacity = 0
-            self.button7.opacity = 0
-            self.button8.opacity = 0
-            self.button9.text = ''
-            self.button10.text = ''
-
-            animation1 = Animation(pos =(0, 0), t ='out_bounce')
-            animation1 += Animation(pos =(0, 330), t ='out_bounce')
-            animation1 += Animation(pos =(650, 330), t ='out_bounce')
-            animation1 += Animation(pos =(650, 0), t ='out_bounce')
-            animation1 += Animation(pos =(0, 0), t ='out_bounce')
-            animation1 += Animation(pos =(0, 330), t ='out_bounce')
-            animation1 += Animation(pos =(650, 330), t ='out_bounce')
-            animation1 += Animation(pos =(650, 0), t ='out_bounce')
-            animation1 &= Animation(size =(150, 150))
-            animation1 += Animation(pos =(0, 0), t ='out_bounce')
-            
-            animation2 = Animation(pos =(650, 0), t ='out_bounce')
-            animation2 += Animation(pos =(650, 330), t ='out_bounce')
-            animation2 += Animation(pos =(0, 330), t ='out_bounce')
-            animation2 += Animation(pos =(0, 0), t ='out_bounce')
-            animation2 &= Animation(size =(150, 150))
-            animation2 += Animation(pos =(650, 0), t ='out_bounce')
-
-            
-            animation1.repeat = True
-            animation2.repeat = True
-            animation1.start(run)
-            animation2.start(clear)
-        
-        def parseButtons(event):
-            showPopup()
+        def parseButtons():
             commandList = []
             if not 'Talk' in self.button1.text:
                 commandList.append(Command(self.button1.text.split(':')[1], self.button1.text.split(':')[2].split('.')[0].split(' ')[1]))
@@ -370,6 +335,58 @@ class MyApp(App):
             print('here')
             for each in commandList:
                 each.ExecuteCommand()
+
+
+        def showPopup(bool):
+            run = self.button9
+            clear = self.button10
+
+            self.button1.opacity = 0
+            self.button2.opacity = 0
+            self.button3.opacity = 0
+            self.button4.opacity = 0
+            self.button5.opacity = 0
+            self.button6.opacity = 0
+            self.button7.opacity = 0
+            self.button8.opacity = 0
+            self.button9.text = ''
+            self.button10.text = ''
+
+            animation1 = Animation(pos =(0, 0), t ='out_bounce')
+            animation1 += Animation(pos =(0, 330), t ='out_bounce')
+            animation1 += Animation(pos =(650, 330), t ='out_bounce')
+            animation1 += Animation(pos =(650, 0), t ='out_bounce')
+            animation1 += Animation(pos =(0, 0), t ='out_bounce')
+            animation1 += Animation(pos =(0, 330), t ='out_bounce')
+            animation1 += Animation(pos =(650, 330), t ='out_bounce')
+            animation1 += Animation(pos =(650, 0), t ='out_bounce')
+            animation1 &= Animation(size =(150, 150))
+            animation1 += Animation(pos =(0, 0), t ='out_bounce')
+            
+            animation2 = Animation(pos =(650, 0), t ='out_bounce')
+            animation2 += Animation(pos =(650, 330), t ='out_bounce')
+            animation2 += Animation(pos =(0, 330), t ='out_bounce')
+            animation2 += Animation(pos =(0, 0), t ='out_bounce')
+            animation2 &= Animation(size =(150, 150))
+            animation2 += Animation(pos =(650, 0), t ='out_bounce')
+
+            if bool:  
+                print("bool1 " + str(bool))  
+                animation1.repeat = True
+                animation2.repeat = True
+                animation1.start(run)
+                animation2.start(clear)
+            else:
+                print(bool)
+                animation1.repeat = False
+                animation2.repeat = False
+                animation1.start(run)
+                animation2.start(clear)
+            parseButtons()
+        
+        def buttonPress(event):
+            showPopup(True)
+        
         
         self.button9 = Button(
             text = "RUN",
@@ -380,7 +397,7 @@ class MyApp(App):
             pos_hint = {"center_x":0.3},
             background_color = blue
             )
-        self.button9.bind(on_release=parseButtons)
+        self.button9.bind(on_release=buttonPress)
 
         def reload(event):
             self.button1.text = "Action 1"

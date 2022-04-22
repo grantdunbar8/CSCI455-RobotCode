@@ -33,15 +33,13 @@ class Command:
                 self.methods.positionMotor(0, 7500, abs(int(self.exeValue)))
                 self.methods.positionMotor(0, 6000, 0)
 
-        elif len(self.exeType) == len('turn right') and self.exeType == 'turn right':
-            print("TYPE: turn right")
+        elif len(self.exeType) == len(' Robot Turn plus') and self.exeType == ' Robot Turn plus':
             self.methods.positionMotor(0, 6000, 0)
-            self.methods.positionMotor(1, 4900, 0)
-
-        elif len(self.exeType) == len('turn left') and self.exeType == 'turn left':
-            print("TYPE: turn left")
-            self.methods.positionMotor(0, 6000, 0)
-            self.methods.positionMotor(1, 7150, 0)
+            if(int(self.exeValue) > 0):
+                print("TYPE: turn right")
+            else:
+                print('TYPE: turn left')
+            self.methods.positionMotor(1, 6000 - int(self.exeValue), 0)
 
         elif len(self.exeType) == len(' Head Tilt plus') and self.exeType == ' Head Tilt plus':
             print("TYPE: head tilt")
@@ -59,10 +57,10 @@ class Command:
             print("TYPE: pause")
             self.methods.positionMotor(100, 0, int(self.exeValue))
 
-        elif len(self.exeType) == len('speak') and self.exeType == 'speak':
+        elif len(self.exeType) == len(' Robot Talk') and self.exeType == ' Robot Talk':
             print('TYPE: speak')
-            self.methods.speak(self.exeValue)
+            self.methods.speak(self.exeValue.replace(' ', ''))
 
-        elif len(self.exeType) == len('wait for') and self.exeType == 'wait for':
+        elif len(self.exeType) == len(' Human Talk') and self.exeType == ' Human Talk':
             print('TYPE: wait for ' + self.exeValue)
             self.methods.waitForCommand(self.exeValue)
