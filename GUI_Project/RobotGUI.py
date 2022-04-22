@@ -1,4 +1,5 @@
 
+
 import kivy
 kivy.require('1.0.6')  # replace with your current kivy version !
 
@@ -283,17 +284,17 @@ class MyApp(App):
         
         def parseButtons(event):
             commandList = []
-            commandList.append(Command(self.button1.text.split(':')[1], self.button1.text.split(':')[2].replace(' ', '').split('.')[0]))
-            commandList.append(Command(self.button2.text.split(':')[1], self.button2.text.split(':')[2].replace(' ', '').split('.')[0]))
-            commandList.append(Command(self.button3.text.split(':')[1], self.button3.text.split(':')[2].replace(' ', '').split('.')[0]))
-            commandList.append(Command(self.button4.text.split(':')[1], self.button4.text.split(':')[2].replace(' ', '').split('.')[0]))
-            commandList.append(Command(self.button5.text.split(':')[1], self.button5.text.split(':')[2].replace(' ', '').split('.')[0]))
-            commandList.append(Command(self.button6.text.split(':')[1], self.button6.text.split(':')[2].replace(' ', '').split('.')[0]))
-            commandList.append(Command(self.button7.text.split(':')[1], self.button7.text.split(':')[2].replace(' ', '').split('.')[0]))
-            commandList.append(Command(self.button8.text.split(':')[1], self.button8.text.split(':')[2].replace(' ', '').split('.')[0]))
+            commandList.append(Command(self.button1.text.split(':')[1], self.button1.text.split(':')[2].split('.')[0].split(' ')[1]))
+            commandList.append(Command(self.button2.text.split(':')[1], self.button2.text.split(':')[2].split('.')[0].split(' ')[1]))
+            commandList.append(Command(self.button3.text.split(':')[1], self.button3.text.split(':')[2].split('.')[0].split(' ')[1]))
+            commandList.append(Command(self.button4.text.split(':')[1], self.button4.text.split(':')[2].split('.')[0].split(' ')[1]))
+            commandList.append(Command(self.button5.text.split(':')[1], self.button5.text.split(':')[2].split('.')[0].split(' ')[1]))
+            commandList.append(Command(self.button6.text.split(':')[1], self.button6.text.split(':')[2].split('.')[0].split(' ')[1]))
+            commandList.append(Command(self.button7.text.split(':')[1], self.button7.text.split(':')[2].split('.')[0].split(' ')[1]))
+            commandList.append(Command(self.button8.text.split(':')[1], self.button8.text.split(':')[2].split('.')[0].split(' ')[1]))
 
             print(self.button1.text.split(':')[1])
-            print(self.button1.text.split(':')[2].replace(' ', '').split('.')[0])
+            print(self.button1.text.split(':')[2].split('.')[0].split(' ')[1])
             print('here')
             for each in commandList:
                 each.ExecuteCommand()

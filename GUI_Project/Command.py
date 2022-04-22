@@ -43,15 +43,15 @@ class Command:
             self.methods.positionMotor(0, 6000, 0)
             self.methods.positionMotor(1, 7150, 0)
 
-        elif len(self.exeType) == len(' Head Tilt') and self.exeType == ' Head Tilt':
+        elif len(self.exeType) == len(' Head Tilt plus') and self.exeType == ' Head Tilt plus':
             print("TYPE: head tilt")
             self.methods.positionMotor(4, 6000 + int(self.exeValue), 0)
 
-        elif len(self.exeType) == len(' Head Pan') and self.exeType == ' Head Pan':
+        elif len(self.exeType) == len(' Head Pan plus') and self.exeType == ' Head Pan plus':
             print("TYPE: head pan")
             self.methods.positionMotor(3, 6000 - int(self.exeValue), 0)
 
-        elif len(self.exeType) == len(' Waist Turn') and self.exeType == ' Waist Turn':
+        elif len(self.exeType) == len(' Waist Turn plus') and self.exeType == ' Waist Turn plus':
             print("TYPE: waist")
             self.methods.positionMotor(2, 6000 - int(self.exeValue), 0)
 
