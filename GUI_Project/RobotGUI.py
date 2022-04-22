@@ -74,65 +74,81 @@ class MyApp(App):
             if ('seconds' not in self.button1.text) and ('Robot Move' in self.button1.text):
                 newText = self.button1.text + " for: " + str(self.testVal) + " seconds"
                 self.button1.text = newText
+                self.slider.value = 0
             elif ('plus' not in self.button1.text) and (('Robot Turn' in self.button1.text) or ('Head Tilt' in self.button1.text) or ('Head Pan' in self.button1.text) or ('Waist Turn' in self.button1.text)):
                 newText = self.button1.text + " plus: " + str(self.testVal)
                 self.button1.text = newText
+                self.slider2.value = 0
 
         if ('Action2' in self.button2.text):
             if ('seconds' not in self.button2.text) and ('Robot Move' in self.button2.text):
                 newText = self.button2.text + " for: " + str(self.testVal) + " seconds"
                 self.button2.text = newText
+                self.slider.value = 0
             elif ('plus' not in self.button2.text) and (('Robot Turn' in self.button2.text) or ('Head Tilt' in self.button2.text) or ('Head Pan' in self.button2.text) or ('Waist Turn' in self.button2.text)):
                 newText = self.button2.text + " plus: " + str(self.testVal)
                 self.button2.text = newText
+                self.slider2.value = 0
 
         if ('Action3' in self.button3.text):
             if ('seconds' not in self.button3.text) and ('Robot Move' in self.button3.text):
                 newText = self.button3.text + " for: " + str(self.testVal) + " seconds"
                 self.button3.text = newText
+                self.slider.value = 0
             elif ('plus' not in self.button3.text) and (('Robot Turn' in self.button3.text) or ('Head Tilt' in self.button3.text) or ('Head Pan' in self.button3.text) or ('Waist Turn' in self.button3.text)):
                 newText = self.button3.text + " plus: " + str(self.testVal)
                 self.button3.text = newText
+                self.slider2.value = 0
 
         if ('Action4' in self.button4.text):
             if ('seconds' not in self.button4.text) and ('Robot Move' in self.button4.text):
                 newText = self.button4.text + " for: " + str(self.testVal) + " seconds"
                 self.button4.text = newText
+                self.slider.value = 0
             elif ('plus' not in self.button4.text) and (('Robot Turn' in self.button4.text) or ('Head Tilt' in self.button4.text) or ('Head Pan' in self.button4.text) or ('Waist Turn' in self.button4.text)):
                 newText = self.button4.text + " plus: " + str(self.testVal)
                 self.button4.text = newText
+                self.slider2.value = 0
 
         if ('Action5' in self.button5.text):
             if ('seconds' not in self.button5.text) and ('Robot Move' in self.button5.text):
                 newText = self.button5.text + " for: " + str(self.testVal) + " seconds"
                 self.button5.text = newText
+                self.slider.value = 0
             elif ('plus' not in self.button5.text) and (('Robot Turn' in self.button5.text) or ('Head Tilt' in self.button5.text) or ('Head Pan' in self.button5.text) or ('Waist Turn' in self.button5.text)):
                 newText = self.button5.text + " plus: " + str(self.testVal)
                 self.button5.text = newText
+                self.slider2.value = 0
 
         if ('Action6' in self.button6.text):
             if ('seconds' not in self.button6.text) and ('Robot Move' in self.button6.text):
                 newText = self.button6.text + " for: " + str(self.testVal) + " seconds"
                 self.button6.text = newText
+                self.slider.value = 0
             elif ('plus' not in self.button6.text) and (('Robot Turn' in self.button6.text) or ('Head Tilt' in self.button6.text) or ('Head Pan' in self.button6.text) or ('Waist Turn' in self.button6.text)):
                 newText = self.button6.text + " plus: " + str(self.testVal)
                 self.button6.text = newText
+                self.slider2.value = 0
 
         if ('Action7' in self.button7.text):
             if ('seconds' not in self.button7.text) and ('Robot Move' in self.button7.text):
                 newText = self.button7.text + " for: " + str(self.testVal) + " seconds"
                 self.button7.text = newText
+                self.slider.value = 0
             elif ('plus' not in self.button7.text) and (('Robot Turn' in self.button7.text) or ('Head Tilt' in self.button7.text) or ('Head Pan' in self.button7.text) or ('Waist Turn' in self.button7.text)):
                 newText = self.button7.text + " plus: " + str(self.testVal)
                 self.button7.text = newText
+                self.slider2.value = 0
 
         if ('Action8' in self.button8.text):
             if ('seconds' not in self.button8.text) and ('Robot Move' in self.button8.text):
                 newText = self.button8.text + " for: " + str(self.testVal) + " seconds"
                 self.button8.text = newText
+                self.slider.value = 0
             elif ('plus' not in self.button8.text) and (('Robot Turn' in self.button8.text) or ('Head Tilt' in self.button8.text) or ('Head Pan' in self.button8.text) or ('Waist Turn' in self.button8.text)):
                 newText = self.button8.text + " plus: " + str(self.testVal)
                 self.button8.text = newText
+                self.slider2.value = 0
 
 
     def build(self):
@@ -167,7 +183,7 @@ class MyApp(App):
             # print(instance)
             #return value
 
-        slider = Slider(
+        self.slider = Slider(
             min = -10, 
             max = 10, 
             orientation = 'horizontal',
@@ -179,14 +195,16 @@ class MyApp(App):
        
         label1 = Label()
         popupButton = Button(text = "Set Value")
-        slider.bind(value=OnSliderValueChange)
+        self.slider.bind(value=OnSliderValueChange)
         box = BoxLayout()
-        box.add_widget(slider)
+        box.add_widget(self.slider)
         box.add_widget(label1)
         box.add_widget(popupButton)
         popup = Popup(title = "+ = forward | - = backward", content = box, size_hint = (None, None), size = (400, 100))
         popupButton.bind(on_press = popup.dismiss)
         popupButton.bind(on_press = self.update)
+
+        
 
 #################################################
         def OnSliderValueChange2(instance, value):
@@ -197,7 +215,7 @@ class MyApp(App):
             # print(instance)
             #return value
 
-        slider2 = Slider(
+        self.slider2 = Slider(
             min = -1500, 
             max = 1500, 
             orientation = 'horizontal',
@@ -208,9 +226,9 @@ class MyApp(App):
             )
         label2 = Label()
         popupButton2 = Button(text = "Set Value")
-        slider2.bind(value=OnSliderValueChange2)
+        self.slider2.bind(value=OnSliderValueChange2)
         box2 = BoxLayout()
-        box2.add_widget(slider2)
+        box2.add_widget(self.slider2)
         box2.add_widget(label2)
         box2.add_widget(popupButton2)
         popup2 = Popup(title = "+ = up, right | - = down, left", content = box2, size_hint = (None, None), size = (400, 100))
