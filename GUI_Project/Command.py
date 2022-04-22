@@ -1,5 +1,5 @@
 from Methods import *
-#import serial
+import serial
 class Command:
     exeValue = 0
     exeType = ''
@@ -21,8 +21,8 @@ class Command:
         # exeType can be integers or strings or any type of variable
         # whatever works best.
         print(self.exeType)
-        if len(self.exeType) == len(' Robot move for') and self.exeType == 'move forward':
-            if(self.exeDuration > 0):
+        if len(self.exeType) == len(' Robot Move for') and self.exeType == ' Robot Move for':
+            if(int(self.exeValue) > 0):
                 print("TYPE: move forward")
                 self.methods.positionMotor(0, 6000, 0)
                 self.methods.positionMotor(0, 4500, int(self.exeValue))
@@ -43,15 +43,15 @@ class Command:
             self.methods.positionMotor(0, 6000, 0)
             self.methods.positionMotor(1, 7150, 0)
 
-        elif len(self.exeType) == len('head tilt') and self.exeType == 'head tilt':
+        elif len(self.exeType) == len(' Head Tilt') and self.exeType == ' Head Tilt':
             print("TYPE: head tilt")
             self.methods.positionMotor(4, 6000 + int(self.exeValue), 0)
 
-        elif len(self.exeType) == len('head pan') and self.exeType == 'head pan':
+        elif len(self.exeType) == len(' Head Pan') and self.exeType == ' Head Pan':
             print("TYPE: head pan")
             self.methods.positionMotor(3, 6000 - int(self.exeValue), 0)
 
-        elif len(self.exeType) == len('waist') and self.exeType == 'waist':
+        elif len(self.exeType) == len(' Waist Turn') and self.exeType == ' Waist Turn':
             print("TYPE: waist")
             self.methods.positionMotor(2, 6000 - int(self.exeValue), 0)
 
