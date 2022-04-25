@@ -1,0 +1,45 @@
+* Start is on outside of map, randomly chose which edge node
+* End is randomized and opposite side of start node
+* 25 nodes, all nodes are randomly assigned an action
+	* Start node 
+	* Finish node - Only end the game if you have the key
+	* 3 Charging Stations(replenish hit points) - randomized position, >2 nodes away from eachother 
+	* 2 Coffe Shops (hint to find key) - randomized position, >2 nodes away from eachother 
+	* 6 Easy Battles - Random num bad guys
+	* 5 Medium Battles - Random num bad guys
+	* 3 Hard Battles - Random num bad guys
+	* 2 Fun Nodes - 
+	* 1 Tricky Node
+* Robot Stuff
+	* Turn proper directions
+	* Follow path
+	* Each type of node has specific movements and images
+* Game Rules 
+	* Player
+		* Hit points - 100hp
+		* Damage - Hits one enemy but leftover goes to next enemy
+			* Hit chance (random 1-10)
+				* 10% chance miss (1)
+				* 80% chance regular hit (2-9)
+				* 10% chance crit (10)
+			* Damage Points
+				* Regular Hit - 20dp 
+				* Crit Hit - 40dp
+	* Easy Battle (run option - 75% chance success, placed randomly on map)
+		* Num bad guys - Random 3-6
+		* Damage - Random 0-5 dp times num bad guys
+		* Health - 10HP each
+	* Medium Battle
+		* Num bad guys - Random 2-4
+		* Damage - Random 0-10 dp times num bad guys
+		* Health - 20HP
+	* Hard Battle
+		* Num bad guy - One big boi 
+		* Damage - Random 0-40 dp 
+		* Health - Random 80hp - 120 hp
+	* Fun Nodes
+		* Dance to get HP buff - plus 50HP to base and current health
+		* Beg (robot talk) to get DP buff - plus 10dp to regular and crit hit
+	* Tricky Choice (find key) - Riddle or problem solve somehting clever
+			
+
