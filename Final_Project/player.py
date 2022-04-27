@@ -6,11 +6,12 @@ class Player:
     regularAttack = 20
     critAttack = 40
     hasKey = False
+    moves = 0
 
     kX = 4
     kY = 4
-    pX = 2
-    pY = 2
+    pX = 0
+    pY = 0
     
     def __init__(self):
         print('player has been created')
@@ -19,10 +20,13 @@ class Player:
     def attack(self):
         attack = random.randint(1,10)
         if attack == 0:
+            print('missed attack')
             return 0
         elif attack == 10:
+            print('crit attack')
             return self.critAttack
         else:
+            print('normal attack')
             return self.regularAttack
     
     def takeDamage(self, damage):

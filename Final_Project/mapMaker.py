@@ -18,7 +18,7 @@ x = 0
 y = 0
 
 map[0][0].setState('start')
-map[1][0].setState('charging')
+map[1][0].setState('hard')
 #map[1][0].setState('tricky')
 map[1][1].setState('finish')
 
@@ -27,30 +27,37 @@ player = Player()
 
 user = ''
 while(input != 'exit'):
-    currentPosition = map[x][y]
+    currentPosition = map[player.pX][player.pY]
     currentPosition.runState(player)
+    currentPosition = map[player.pX][player.pY]
     currentPosition.getDirections()
     user = input(':')
     if(user == 'west'):
         if(currentPosition.ableWest()):
-            x-=1
+            player.pX-=1
+            player.moves+=1
         else:
             print('can not go that way')
     if(user == 'east'):
         if(currentPosition.ableEast()):
-            x+=1
+            player.pX+=1
+            player.moves+=1
         else:
             print('can not go that way')
     if(user == 'north'):
         if(currentPosition.ableNorth()):
-            y-=1
+            player.pY-=1
+            player.moves+=1
         else:
             print('can not go that way')
     if(user == 'south'):
         if(currentPosition.ableSouth()):
-            y+=1
+            player.pY+=1
+            player.moves+=1
         else:
             print('can not go that way')
+    
+
 
 
 

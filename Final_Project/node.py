@@ -1,4 +1,3 @@
-from os import stat
 from startNode import StartNode
 from finishNode import FinishNode
 from chargingNode import ChargingNode
@@ -8,6 +7,7 @@ from mediumNode import MediumNode
 from hardNode import HardNode
 from funNode import FunNode
 from trickyNode import TrickyNode
+import sys
 
 class Node:
     west = ''
@@ -66,5 +66,9 @@ class Node:
             self.state = TrickyNode()
     
     def runState(self, player):
+        if(player.moves > 50):
+            print('too many moves have been made, you lose')
+            sys.exit(0)
+        
         self.state.nodeAction(player)
     
