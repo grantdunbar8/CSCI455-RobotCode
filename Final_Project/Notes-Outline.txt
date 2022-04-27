@@ -4,7 +4,7 @@
 	* Start node 
 	* Finish node - Only end the game if you have the key
 	* 3 Charging Stations(replenish hit points) - randomized position, >2 nodes away from eachother 
-	* 2 Coffe Shops (hint to find key) - randomized position, >2 nodes away from eachother 
+	* 2 Coffee Shops (hint to find key) - randomized position, >2 nodes away from eachother 
 	* 6 Easy Battles - Random num bad guys
 	* 5 Medium Battles - Random num bad guys
 	* 3 Hard Battles - Random num bad guys

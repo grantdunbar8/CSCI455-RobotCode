@@ -1,4 +1,5 @@
 from node import *
+from player import Player
 
 map = []
 col0 = [Node(False, True, False, False), Node(False, True, False, True), Node(False, False, True, True), Node(False, True, True, False), Node(False, True, False, False)]
@@ -16,9 +17,18 @@ map.append(col4)
 x = 0
 y = 0
 
+map[0][0].setState('start')
+map[1][0].setState('charging')
+#map[1][0].setState('tricky')
+map[1][1].setState('finish')
+
+player = Player()
+
+
 user = ''
 while(input != 'exit'):
     currentPosition = map[x][y]
+    currentPosition.runState(player)
     currentPosition.getDirections()
     user = input(':')
     if(user == 'west'):

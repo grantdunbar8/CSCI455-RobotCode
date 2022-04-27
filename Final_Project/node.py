@@ -1,3 +1,14 @@
+from os import stat
+from startNode import StartNode
+from finishNode import FinishNode
+from chargingNode import ChargingNode
+from coffeeNode import CoffeeNode
+from easyNode import EasyNode
+from mediumNode import MediumNode
+from hardNode import HardNode
+from funNode import FunNode
+from trickyNode import TrickyNode
+
 class Node:
     west = ''
     east = ''
@@ -33,4 +44,27 @@ class Node:
     
     def ableSouth(self):
         return self.south
+
+    def setState(self, state):
+        if(state == 'start'):
+            self.state = StartNode()
+        elif(state == 'finish'):
+            self.state = FinishNode()
+        elif(state == 'charging'):
+            self.state = ChargingNode()
+        elif(state == 'coffee'):
+            self.state = CoffeeNode()
+        elif(state == 'easy'):
+            self.state = EasyNode()
+        elif(state == 'medium'):
+            self.state = MediumNode()
+        elif(state == 'hard'):
+            self.state = HardNode()
+        elif(state == 'fun'):
+            self.state = FunNode()
+        elif(state == 'tricky'):
+            self.state = TrickyNode()
+    
+    def runState(self, player):
+        self.state.nodeAction(player)
     
