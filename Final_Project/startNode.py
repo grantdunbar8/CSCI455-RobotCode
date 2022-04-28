@@ -4,3 +4,4 @@ class StartNode:
 
     def nodeAction(self, player):
         print('this is the start node')
+        #start node animation

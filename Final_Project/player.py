@@ -1,4 +1,5 @@
 import random, sys
+import movingTester
 class Player:
     totalHP = 100
     hp = 100
@@ -13,24 +14,37 @@ class Player:
     pX = 0
     pY = 0
     
+    #TODO: should be able to put all movements NOT animations in the player class
+    #   animations are for each node not interactions within the node, unless we want to change that
+
     def __init__(self):
         print('player has been created')
         print('current health is: ' + str(self.hp))
+        self.mover = movingTester()
 
     def attack(self):
         attack = random.randint(1,10)
         if attack == 0:
             print('missed attack')
+            #miss animation
+            #miss movement
+            
             return 0
         elif attack == 10:
             print('crit attack')
+            #crit attack animation
+            #crit movement
             return self.critAttack
         else:
             print('normal attack')
+            #attack animation
+            #normal movement
             return self.regularAttack
     
     def takeDamage(self, damage):
         self.hp -= damage
+        #take damage animation
+        #take damage movement
         if(self.hp <= 0):
             print('you died')
             sys.exit(0)
@@ -69,3 +83,64 @@ class Player:
             return('southeast')
         elif(self.pX > self.kX and self.pY < self.kY):
             return('southwest')
+
+    def movePlayer(self, directionChoice):
+        #check direction of robot
+        if(directionChoice == self.direction):
+            self.mover.MoveToNextNode()
+        else:
+            while(directionChoice != self.direction):   #while robot isn't facing the right way
+                if(directionChoice == 'east'):
+                    if(self.direction == 'north'):
+                        self.mover.TurnRight()
+                        self.direction = 'east'
+                    elif(self.direction == 'west'):
+                        self.mover.TurnRight()
+                        self.mover.TurnRight()
+                        self.direction = 'east'
+                    elif(self.direction == 'south'):
+                        self.mover.TurnLeft()
+                        self.direction = 'east'
+
+                elif(directionChoice == 'north'):
+                    if(self.direction == 'east'):
+                        self.mover.TurnLeft()
+                        self.direction = 'north'
+                    elif(self.direction == 'west'):
+                        self.mover.TurnRight()
+                        self.direction = 'north'
+                    elif(self.direction == 'south'):
+                        self.mover.TurnRight()
+                        self.mover.TurnRight()
+                        self.direction = 'north'
+
+                elif(directionChoice == 'west'):
+                    if(self.direction == 'north'):
+                        self.mover.TurnLeft()
+                        self.direction = 'west'
+                    elif(self.direction == 'east'):
+                        self.mover.TurnRight()
+                        self.mover.TurnRight()
+                        self.direction = 'west'
+                    elif(self.direction == 'south'):
+                        self.mover.TurnRight()
+                        self.direction = 'west'
+
+                elif(directionChoice == 'south'):
+                    if(self.direction == 'north'):
+                        self.mover.TurnRight()
+                        self.mover.TurnRight()
+                        self.direction = 'south'
+                    elif(self.direction == 'east'):
+                        self.mover.TurnRight()
+                        self.direction = 'south'
+                    elif(self.direction == 'west'):
+                        self.mover.TurnLeft()
+                        self.direction = 'south'
+            #move robot to next node once facing the right way
+            self.mover.MoveToNextNode()
+
+
+        #make robot turn that direction
+        #make robot go forward 
+        print()

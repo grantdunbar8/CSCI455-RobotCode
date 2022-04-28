@@ -17,6 +17,7 @@ map.append(col4)
 x = 0
 y = 0
 
+#randomize here
 map[0][0].setState('start')
 map[1][0].setState('hard')
 #map[1][0].setState('tricky')
@@ -36,24 +37,28 @@ while(input != 'exit'):
         if(currentPosition.ableWest()):
             player.pX-=1
             player.moves+=1
+            player.movePlayer(user)
         else:
             print('can not go that way')
     if(user == 'east'):
         if(currentPosition.ableEast()):
             player.pX+=1
             player.moves+=1
+            player.movePlayer(user)
         else:
             print('can not go that way')
     if(user == 'north'):
         if(currentPosition.ableNorth()):
             player.pY-=1
             player.moves+=1
+            player.movePlayer(user)
         else:
             print('can not go that way')
     if(user == 'south'):
         if(currentPosition.ableSouth()):
             player.pY+=1
             player.moves+=1
+            player.movePlayer(user)
         else:
             print('can not go that way')
     

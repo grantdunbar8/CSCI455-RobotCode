@@ -62,7 +62,7 @@ class MoveTester:
         sleep(.25)
         print("right 4")
 
-    def ArmDefault(self):
+    def ArmDefault(self):   #Straightens arm, is about 30degrees off 
         self.methods.positionMotor(5, 6000)
         sleep(1)
         self.methods.positionMotor(6, 6000)

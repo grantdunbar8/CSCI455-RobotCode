@@ -10,6 +10,7 @@ class EasyNode:
 
 
     def nodeAction(self, player):
+        #fight animation
         print('this is an easy battle - there are ' + str(self.numEnemy) + ' enemies')
         print('player current health is ' + str(player.hp))
         user = input('run or fight: ')

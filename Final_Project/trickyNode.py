@@ -6,3 +6,4 @@ class TrickyNode:
         print('this is the tricky node')
         print('you got the key')
         player.gotKey()
+        #tricky node animation

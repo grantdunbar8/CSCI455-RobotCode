@@ -14,6 +14,7 @@ class MediumNode:
         print('this is a medium battle - there are ' + str(self.numEnemy) + ' enemies')
         print('player current health is ' + str(player.hp))
         user = input('run or fight: ')
+        #start fight animation
         if(user == 'run'):
             print('trying to run away')
             chance = random.randint(1, 4)
@@ -21,6 +22,8 @@ class MediumNode:
                 print('run failed, you must fight')
                 self.fight(player)
             else:
+                #maybe run animation
+                #stop fight animation
                 print('successfully ran to new node')
                 player.pX = random.randint(0,4)
                 player.pY = random.randint(0,4)

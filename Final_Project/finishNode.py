@@ -4,6 +4,7 @@ class FinishNode:
         print('finish node created')
 
     def nodeAction(self, player):
+        #finish node animation
         print('do you have the key?')
         if(player.key()):
             print('you win!')

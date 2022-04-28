@@ -10,6 +10,7 @@ class HardNode:
 
 
     def nodeAction(self, player):
+        #boss fight animation
         print('this is a boss battle')
         print('player current health is ' + str(player.hp))
         user = input('run or fight: ')
