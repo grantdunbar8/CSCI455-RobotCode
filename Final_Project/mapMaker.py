@@ -18,11 +18,6 @@ map.append(col4)
 x = 0
 y = 0
 
-#randomize here
-map[0][0].setState('start')
-map[1][0].setState('hard')
-#map[1][0].setState('tricky')
-map[1][1].setState('finish')
 
 player = Player()
 
