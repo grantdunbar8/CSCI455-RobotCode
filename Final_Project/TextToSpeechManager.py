@@ -19,3 +19,9 @@ class TextToSpeech:
             os.system("mpg123 " + fileName)
         else:
             print("ERROR: File does not exist.")
+
+    def CreateAndPlay(fileName, inputText):
+        toSpeak = gTTS(text = inputText)
+        toSpeak.save(fileName)
+        os.system("mpg123", fileName)
+        os.remove(fileName)
