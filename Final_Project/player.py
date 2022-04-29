@@ -28,23 +28,30 @@ class Player:
             print('missed attack')
             #miss animation
             #miss movement
-            
+            self.mover.armMissAttack()
+                     
             return 0
         elif attack == 10:
             print('crit attack')
             #crit attack animation
             #crit movement
+            self.mover.armCritAttack()
+
             return self.critAttack
         else:
             print('normal attack')
             #attack animation
             #normal movement
+            self.mover.armDefaultAttack()
+
             return self.regularAttack
     
     def takeDamage(self, damage):
         self.hp -= damage
         #take damage animation
         #take damage movement
+        self.mover.takeDamage()
+
         if(self.hp <= 0):
             print('you died')
             sys.exit(0)
@@ -52,13 +59,16 @@ class Player:
     def boostHealth(self):
         self.totalHP += 50
         self.hp += 50
+        self.mover.boostMove()
     
     def boostAttack(self):
         self.regularAttack += 10
         self.critAttack += 10
+        self.mover.boostMove()
 
     def recharge(self):
         self.hp = self.totalHP
+        self.mover.rechargeMove()
 
     def key(self):
         return self.hasKey
