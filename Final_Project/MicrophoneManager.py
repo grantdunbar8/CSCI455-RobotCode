@@ -25,6 +25,6 @@ class Mic:
                     data = recognizer.recognize_google(audio)
                     print(data)
                     # Do something with data here
-                    # retrun data
+                    # return data?
                 except speech.UnknownValueError:
                     print("ERROR: Unknown data at Mic class.")
