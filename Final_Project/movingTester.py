@@ -5,7 +5,6 @@ import serial
 class MoveTester:
 
     def __init__(self):
-        
         usb = serial.Serial('/dev/ttyACM0')
         self.methods = Methods(usb)
 
@@ -175,35 +174,4 @@ class MoveTester:
         sleep(.1)
         self.armReady()
 
-
-
-
-
-        
-
-test = MoveTester()
-# test.MoveToNextNode()
-# test.TurnLeft()
-# test.MoveToNextNode()
-# test.TurnRight()
-# test.MoveToNextNode()
-# test.TurnLeft()
-# test.TurnLeft()
-# test.MoveToNextNode()
-# test.TurnLeft()
-# test.TurnRight()
-
-test.armReady()
-
-test.armDefaultAttack()
-
-test.armCritAttack()
-
-test.armMissAttack()
-
-test.takeDamage()
-
-test.rechargeMove()
-
-test.boostMove()
 

@@ -4,6 +4,11 @@ class TrickyNode:
 
     def nodeAction(self, player):
         print('this is the tricky node')
-        print('you got the key')
-        player.gotKey()
+        user = input('what gets wetter as it dries? ')
+        if input == 'towel':
+            print('you got the key')
+            player.gotKey()
+        else:
+            print('try again')
+            self.nodeAction(player)
         #tricky node animation
