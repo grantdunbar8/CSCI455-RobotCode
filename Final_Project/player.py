@@ -1,5 +1,6 @@
 import random, sys
-import movingTester
+from movingTester import MoveTester
+
 class Player:
     totalHP = 100
     hp = 100
@@ -8,6 +9,7 @@ class Player:
     critAttack = 40
     hasKey = False
     moves = 0
+    mover = MoveTester()
 
     kX = 4
     kY = 4
@@ -20,7 +22,6 @@ class Player:
     def __init__(self):
         print('player has been created')
         print('current health is: ' + str(self.hp))
-        self.mover = movingTester()
 
     def attack(self):
         attack = random.randint(1,10)
