@@ -22,6 +22,7 @@ class Player:
     def __init__(self):
         print('player has been created')
         print('current health is: ' + str(self.hp))
+        self.mover = MoveTester()
 
     def attack(self):
         attack = random.randint(1,10)

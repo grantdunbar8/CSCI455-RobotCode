@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 import random
+=======
+from operator import contains
+>>>>>>> Stashed changes
 from node import *
 from player import Player
+from MicrophoneManager import Mic
+from TextToSpeechManager import TextToSpeech
 
 map = []
 col0 = [Node(False, True, False, False), Node(False, True, False, True), Node(False, False, True, True), Node(False, True, True, False), Node(False, True, False, False)]
@@ -20,6 +26,9 @@ y = 0
 
 
 player = Player()
+mic = Mic()
+sound = TextToSpeech()
+words = ''
 
 #make start and finish node
 sx = 0
@@ -245,40 +254,96 @@ while not t1:
 print('all nodes have been initialized, 1 start, 1 finish, 3 recharge, 2 coffee, 6 easy, 5 medium, 3 hard, 2 fun, and 1 tricky')
 
 user = ''
-while(input != 'exit'):
+while('exit' not in words):
+    
     currentPosition = map[player.pX][player.pY]
     currentPosition.runState(player)
     currentPosition = map[player.pX][player.pY]
     currentPosition.getDirections()
-    user = input(':')
-    if(user == 'west'):
+    words = mic.Listen()
+    print("GOT HERE: " + str(words) + "TYPE: " + str(type(words)))
+    #user = input(':')
+    if('west' in words):
         if(currentPosition.ableWest()):
             player.pX-=1
             player.moves+=1
-            player.movePlayer(user)
+            #sound.CreateSound("test1.mp3", "going west")
+            sound.PlaySound("sample1.mp3")
+            print("GOT HERE 2222")
+            player.movePlayer('west')
+            
+            
         else:
             print('can not go that way')
-    if(user == 'east'):
+    if('east' in words):
         if(currentPosition.ableEast()):
             player.pX+=1
             player.moves+=1
-            player.movePlayer(user)
+            #sound.CreateSound("test2.mp3", "going east")
+            print(sound.PlaySound("sample1.mp3"))
+            print("GOT HERE 2222")
+            player.movePlayer('east')
+            
+            
         else:
             print('can not go that way')
-    if(user == 'north'):
+    if('north' in words):
         if(currentPosition.ableNorth()):
             player.pY-=1
             player.moves+=1
-            player.movePlayer(user)
+            #sound.CreateSound("test3.mp3", "going north")
+            sound.PlaySound("test3.mp3")
+            player.movePlayer('north')
         else:
             print('can not go that way')
-    if(user == 'south'):
+    if('south' in words):
         if(currentPosition.ableSouth()):
             player.pY+=1
             player.moves+=1
-            player.movePlayer(user)
+            #sound.CreateSound("test4.mp3", "going south")
+            sound.PlaySound("sample1.mp3")
+            player.movePlayer('south')
         else:
             print('can not go that way')
+    
+
+
+
+
+# while(input != 'exit'):
+#     currentPosition = map[player.pX][player.pY]
+#     currentPosition.runState(player)
+#     currentPosition = map[player.pX][player.pY]
+#     currentPosition.getDirections()
+#     user = input(':')
+#     if(user == 'west'):
+#         if(currentPosition.ableWest()):
+#             player.pX-=1
+#             player.moves+=1
+#             player.movePlayer(user)
+#         else:
+#             print('can not go that way')
+#     if(user == 'east'):
+#         if(currentPosition.ableEast()):
+#             player.pX+=1
+#             player.moves+=1
+#             player.movePlayer(user)
+#         else:
+#             print('can not go that way')
+#     if(user == 'north'):
+#         if(currentPosition.ableNorth()):
+#             player.pY-=1
+#             player.moves+=1
+#             player.movePlayer(user)
+#         else:
+#             print('can not go that way')
+#     if(user == 'south'):
+#         if(currentPosition.ableSouth()):
+#             player.pY+=1
+#             player.moves+=1
+#             player.movePlayer(user)
+#         else:
+#             print('can not go that way')
     
 
 

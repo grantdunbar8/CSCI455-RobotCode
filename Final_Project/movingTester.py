@@ -174,4 +174,7 @@ class MoveTester:
         sleep(.1)
         self.armReady()
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes

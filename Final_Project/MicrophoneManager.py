@@ -5,10 +5,11 @@ import time
 life = time.time() + 7
 
 class Mic:
-    def __init__():
+    def __init__(self):
+        self.life = life
     
     def Listen(self):
-        print("Begin collection of mic data for " + life + " seconds.")
+        print("Begin collection of mic data for " + str(life) + " seconds.")
         while time.time() <= life:
             if time.time() > life:
                 break
@@ -24,6 +25,7 @@ class Mic:
                     print("MIC: Got audio.")
                     data = recognizer.recognize_google(audio)
                     print(data)
+                    return data
                     # Do something with data here
                     # return data?
                 except speech.UnknownValueError:
