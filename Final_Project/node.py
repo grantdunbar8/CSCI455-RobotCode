@@ -7,6 +7,7 @@ from mediumNode import MediumNode
 from hardNode import HardNode
 from funNode import FunNode
 from trickyNode import TrickyNode
+from blankNode import BlankNode
 import sys
 
 class Node:
@@ -14,7 +15,7 @@ class Node:
     east = ''
     north = ''
     south = ''
-    state = ''
+    state = BlankNode()
 
     def __init__(self, west, east, north, south):
         self.west = west
@@ -44,6 +45,12 @@ class Node:
     
     def ableSouth(self):
         return self.south
+
+    def isBlank(self):
+        if self.state == BlankNode():
+            return True
+        else:
+            return False
 
     def setState(self, state):
         if(state == 'start'):
