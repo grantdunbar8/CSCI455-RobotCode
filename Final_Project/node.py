@@ -16,6 +16,7 @@ class Node:
     north = ''
     south = ''
     state = BlankNode()
+    stateType = ''
 
     def __init__(self, west, east, north, south):
         self.west = west
@@ -47,7 +48,7 @@ class Node:
         return self.south
 
     def isBlank(self):
-        if self.state == BlankNode():
+        if self.stateType == '':
             return True
         else:
             return False
@@ -71,6 +72,7 @@ class Node:
             self.state = FunNode()
         elif(state == 'tricky'):
             self.state = TrickyNode()
+        self.stateType = state
     
     def runState(self, player):
         if(player.moves > 50):

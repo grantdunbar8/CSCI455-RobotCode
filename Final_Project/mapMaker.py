@@ -75,7 +75,7 @@ def chargeOne(map):
     cy = random.randint(0,2)
     if((cx == 0 or cx == 2) and cy == 2 ):
         cy = random.randint(0,1)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('charging')
         return True
     else:
@@ -84,7 +84,7 @@ def chargeOne(map):
 def chargeTwo(map):
     cx = random.randint(0,2)
     cy = random.randint(3,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('charging')
         return True
     else:
@@ -93,7 +93,7 @@ def chargeTwo(map):
 def chargeThree(map):
     cx = random.randint(3,4)
     cy = random.randint(0,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('charging')
         return True
     else:
@@ -116,7 +116,7 @@ while not cThree:
 def coffeeOne(map):
     cx = random.randint(0,1)
     cy = random.randint(0,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('coffee')
         return True
     else:
@@ -124,7 +124,7 @@ def coffeeOne(map):
 def coffeeTwo(map):
     cx = random.randint(3,4)
     cy = random.randint(0,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('coffee')
         return True
     else:
@@ -142,7 +142,7 @@ while not cTwo:
 def easy(map):
     cx = random.randint(0,4)
     cy = random.randint(0,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('easy')
         return True
     else:
@@ -172,7 +172,7 @@ while not e6:
 def medium(map):
     cx = random.randint(0,4)
     cy = random.randint(0,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('medium')
         return True
     else:
@@ -199,7 +199,7 @@ while not m5:
 def hard(map):
     cx = random.randint(0,4)
     cy = random.randint(0,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('hard')
         return True
     else:
@@ -220,7 +220,7 @@ while not h3:
 def fun(map):
     cx = random.randint(0,4)
     cy = random.randint(0,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('fun')
         return True
     else:
@@ -238,7 +238,7 @@ while not f2:
 def tricky(map, player):
     cx = random.randint(0,4)
     cy = random.randint(0,4)
-    if(map[cx][cy].blankState()):
+    if(map[cx][cy].isBlank()):
         map[cx][cy].setState('fun')
         player.kX = cx
         player.kY = cy
