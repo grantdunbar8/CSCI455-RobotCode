@@ -8,6 +8,7 @@ from hardNode import HardNode
 from funNode import FunNode
 from trickyNode import TrickyNode
 from blankNode import BlankNode
+from TextToSpeechManager import TextToSpeech
 import sys
 
 class Node:
@@ -17,6 +18,7 @@ class Node:
     south = ''
     state = BlankNode()
     stateType = ''
+    sound = TextToSpeech()
 
     def __init__(self, west, east, north, south):
         self.west = west
@@ -25,14 +27,24 @@ class Node:
         self.south = south
 
     def getDirections(self):
+        self.sound.CreateSound("options.mp3", "you can go ")
+        self.sound.PlaySound("options.mp3")
         print('you can go:')
         if(self.west):
+            self.sound.CreateSound("west.mp3", "west")
+            self.sound.PlaySound("west.mp3")
             print('west')
         if(self.east):
+            self.sound.CreateSound("east.mp3", "east")
+            self.sound.PlaySound("east.mp3")
             print('east')
         if(self.north):
+            self.sound.CreateSound("north.mp3", "north")
+            self.sound.PlaySound("north.mp3")
             print('north')
         if(self.south):
+            self.sound.CreateSound("south.mp3", "south")
+            self.sound.PlaySound("south.mp3")
             print('south')
 
     def ableWest(self):
