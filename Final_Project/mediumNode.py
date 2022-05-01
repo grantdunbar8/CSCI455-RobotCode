@@ -40,7 +40,10 @@ class MediumNode:
             self.hitPoints -= player.attack()
             if(self.hitPoints > 0):
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
-                self.numEnemy = self.hitPoints/20 + 1
+                if(self.hitPoints % 20 == 0):
+                    self.numEnemy = self.hitPoints/20
+                else:
+                    self.numEnemy = self.hitPoints/20 + 1
                 self.nodeAction(player)
         else:
             print('you beat the enemy')
