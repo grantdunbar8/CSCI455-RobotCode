@@ -25,7 +25,6 @@ y = 0
 player = Player()
 mic = Mic()
 sound = TextToSpeech()
-words = 'something'
 
 #make start and finish node
 sx = 0
@@ -251,13 +250,17 @@ while not t1:
 print('all nodes have been initialized, 1 start, 1 finish, 3 recharge, 2 coffee, 6 easy, 5 medium, 3 hard, 2 fun, and 1 tricky')
 
 user = ''
+words = ''
 while('exit' not in words):
+    words = 'exit'
     
     currentPosition = map[player.pX][player.pY]
     currentPosition.runState(player)
     currentPosition = map[player.pX][player.pY]
     currentPosition.getDirections()
     words = mic.Listen()
+    # if(type(words) is type(None)):
+    #     words = 'something'
     print("GOT HERE: " + str(words) + "TYPE: " + str(type(words)))
     #user = input(':')
     if('west' in words):
