@@ -25,7 +25,7 @@ y = 0
 player = Player()
 mic = Mic()
 sound = TextToSpeech()
-words = ''
+words = 'something'
 
 #make start and finish node
 sx = 0
