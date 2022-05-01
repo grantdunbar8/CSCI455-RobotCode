@@ -38,4 +38,5 @@ class HardNode:
             if(self.hitPoints > 0):
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
             self.nodeAction(player)
-        print('you beat the BOSS')
+        else:
+            print('you beat the BOSS')

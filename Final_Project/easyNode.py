@@ -37,7 +37,9 @@ class EasyNode:
             self.hitPoints -= player.attack()
             if(self.hitPoints > 0):
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
+            self.numEnemy = self.hitPoints/10 + 1
             self.nodeAction(player)
-        print('you beat the enemy')
+        else:
+            print('you beat the enemy')
 
     
