@@ -29,7 +29,7 @@ class HardNode:
             self.fight(player)
 
     def fight(self, player):
-        while self.hitPoints > 0:
+        if self.hitPoints > 0:
             hit = random.randint(0,50)
             print('enemy attacks ' + str(hit))
             player.takeDamage(hit)
@@ -37,4 +37,5 @@ class HardNode:
             self.hitPoints -= player.attack()
             if(self.hitPoints > 0):
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
+            self.nodeAction(player)
         print('you beat the BOSS')

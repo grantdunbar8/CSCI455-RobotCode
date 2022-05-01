@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
 import random
-=======
 from operator import contains
->>>>>>> Stashed changes
 from node import *
 from player import Player
 from MicrophoneManager import Mic
@@ -267,8 +264,8 @@ while('exit' not in words):
         if(currentPosition.ableWest()):
             player.pX-=1
             player.moves+=1
-            #sound.CreateSound("test1.mp3", "going west")
-            sound.PlaySound("sample1.mp3")
+            sound.CreateSound("goWest.mp3", "going west")
+            sound.PlaySound("goWest.mp3")
             print("GOT HERE 2222")
             player.movePlayer('west')
             
@@ -279,8 +276,8 @@ while('exit' not in words):
         if(currentPosition.ableEast()):
             player.pX+=1
             player.moves+=1
-            #sound.CreateSound("test2.mp3", "going east")
-            print(sound.PlaySound("sample1.mp3"))
+            sound.CreateSound("goEast.mp3", "going east")
+            print(sound.PlaySound("goEast.mp3"))
             print("GOT HERE 2222")
             player.movePlayer('east')
             
@@ -291,8 +288,8 @@ while('exit' not in words):
         if(currentPosition.ableNorth()):
             player.pY-=1
             player.moves+=1
-            #sound.CreateSound("test3.mp3", "going north")
-            sound.PlaySound("test3.mp3")
+            sound.CreateSound("goNorth.mp3", "going north")
+            sound.PlaySound("goNorth.mp3")
             player.movePlayer('north')
         else:
             print('can not go that way')
@@ -300,8 +297,8 @@ while('exit' not in words):
         if(currentPosition.ableSouth()):
             player.pY+=1
             player.moves+=1
-            #sound.CreateSound("test4.mp3", "going south")
-            sound.PlaySound("sample1.mp3")
+            sound.CreateSound("goSouth.mp3", "going south")
+            sound.PlaySound("goSouth.mp3")
             player.movePlayer('south')
         else:
             print('can not go that way')

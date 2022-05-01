@@ -32,7 +32,7 @@ class MediumNode:
             self.fight(player)
 
     def fight(self, player):
-        while self.hitPoints > 0:
+        if self.hitPoints > 0:
             hit = random.randint(0,20)
             print('enemy attacks ' + str(hit*self.numEnemy))
             player.takeDamage(hit*self.numEnemy)
@@ -40,4 +40,5 @@ class MediumNode:
             self.hitPoints -= player.attack()
             if(self.hitPoints > 0):
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
+            self.nodeAction(player)
         print('you beat the enemy')

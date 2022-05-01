@@ -24,15 +24,12 @@ class TextToSpeech:
         else:
             print("ERROR: File does not exist.")
 
-<<<<<<< Updated upstream
     def CreateAndPlay(fileName, inputText):
         toSpeak = gTTS(text = inputText)
         toSpeak.save(fileName)
         os.system("mpg123", fileName)
         os.remove(fileName)
-=======
         print("RETURN")
         return True
         print("BAD RETURN")
         
->>>>>>> Stashed changes
