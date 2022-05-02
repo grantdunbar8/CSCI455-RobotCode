@@ -2,14 +2,16 @@ import speech_recognition as speech
 import time
 
 # 7 seconds
-life = 7
+#life = time.time() + 7
 
 class Mic:
     # def __init__(self):
     #     self.life = life
     
     def Listen(self):
+        life = time.time() + 7
         print("Begin collection of mic data for " + str(life) + " seconds.")
+        print("The time: " + str(time.time()) + " Life: " + str(life))
         while time.time() <= life:
             if time.time() > life:
                 break
