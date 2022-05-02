@@ -78,6 +78,12 @@ class Player:
     def gotKey(self):
         self.hasKey = True
 
+    def healthBoost(self, boost):
+        if(self.hp + boost > self.totalHP):
+            self.hp = self.totalHP
+        else:
+            self.hp+=boost
+
     def hintDir(self):
         if(self.pX == self.kX and self.pY < self.kY):
             return('south')

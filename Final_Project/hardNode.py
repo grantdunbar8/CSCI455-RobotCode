@@ -11,8 +11,14 @@ class HardNode:
 
     def nodeAction(self, player):
         #boss fight animation
+        self.sound.CreateSound("enemy.mp3", "this is a boss battle")
+        self.sound.PlaySound("enemy.mp3")
         print('this is a boss battle')
+
+        self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
+        self.sound.PlaySound("player.mp3")
         print('player current health is ' + str(player.hp))
+        
         user = input('run or fight: ')
         if(user == 'run'):
             print('trying to run away')
@@ -39,4 +45,7 @@ class HardNode:
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
                 self.nodeAction(player)
         else:
+            self.sound.CreateSound("win.mp3", "congradulations, you beat the boss, you got a health boost of 80")
+            self.sound.PlaySound("win.mp3")
+            player.healthBoost(80)
             print('you beat the BOSS')

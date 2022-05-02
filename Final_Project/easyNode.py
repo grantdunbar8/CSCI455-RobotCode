@@ -11,7 +11,12 @@ class EasyNode:
 
     def nodeAction(self, player):
         #fight animation
+        self.sound.CreateSound("enemy.mp3", 'this is an easy battle - there are ' + str(self.numEnemy) + ' enemies')
+        self.sound.PlaySound("enemy.mp3")
         print('this is an easy battle - there are ' + str(self.numEnemy) + ' enemies')
+
+        self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
+        self.sound.PlaySound("player.mp3")
         print('player current health is ' + str(player.hp))
         user = input('run or fight: ')
         if(user == 'run'):
@@ -43,6 +48,9 @@ class EasyNode:
                     self.numEnemy = self.hitPoints/10 + 1
                 self.nodeAction(player)
         else:
+            self.sound.CreateSound("win.mp3", "you beat the easy ememies, you got a health boost of 20")
+            self.sound.PlaySound("win.mp3")
+            player.healthBoost(20)
             print('you beat the enemy')
 
     

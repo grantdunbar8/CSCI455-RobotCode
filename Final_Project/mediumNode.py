@@ -11,8 +11,14 @@ class MediumNode:
 
 
     def nodeAction(self, player):
+        self.sound.CreateSound("enemy.mp3", 'this is a medium battle - there are ' + str(self.numEnemy) + ' enemies')
+        self.sound.PlaySound("enemy.mp3")
         print('this is a medium battle - there are ' + str(self.numEnemy) + ' enemies')
+
+        self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
+        self.sound.PlaySound("player.mp3")
         print('player current health is ' + str(player.hp))
+
         user = input('run or fight: ')
         #start fight animation
         if(user == 'run'):
@@ -46,4 +52,7 @@ class MediumNode:
                     self.numEnemy = self.hitPoints/20 + 1
                 self.nodeAction(player)
         else:
+            self.sound.CreateSound("win.mp3", "you beat the medium enemies, you got a health boost of 50")
+            self.sound.PlaySound("win.mp3")
+            player.healthBoost(50)
             print('you beat the enemy')
