@@ -252,13 +252,14 @@ print('all nodes have been initialized, 1 start, 1 finish, 3 recharge, 2 coffee,
 user = ''
 words = ''
 while('exit' not in words):
-    words = 'exit'
+    words = ''
     
     currentPosition = map[player.pX][player.pY]
     currentPosition.runState(player)
     currentPosition = map[player.pX][player.pY]
     currentPosition.getDirections()
-    words = mic.Listen()
+    while words == '':
+        words = mic.Listen()
     # if(type(words) is type(None)):
     #     words = 'something'
     print("GOT HERE: " + str(words) + "TYPE: " + str(type(words)))
