@@ -24,6 +24,11 @@ class TextToSpeech:
         else:
             print("ERROR: File does not exist.")
 
+    def RemoveSound(self, fileName):
+        if os.path.exists(fileName) == True:
+            os.remove(fileName)
+            print("removed file")
+
     def CreateAndPlay(fileName, inputText):
         toSpeak = gTTS(text = inputText)
         toSpeak.save(fileName)
