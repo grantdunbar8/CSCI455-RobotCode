@@ -10,6 +10,8 @@ class FinishNode:
     def nodeAction(self, player):
         #finish node animation
         print('do you have the key?')
+        self.sound.CreateSound("win1.mp3", "You've reached the finish, do you have the key?")
+        self.sound.PlaySound("win1.mp3")
         if(player.key()):
             print('you win!')
             self.sound.CreateSound("win.mp3", "Congrats, you have won the game!")

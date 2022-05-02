@@ -10,9 +10,13 @@ class ChargingNode:
     def nodeAction(self, player):
         if(not self.beenVisited):
             #charging node animation
+
+            self.sound.CreateSound("recharge1.mp3", "You've reached a recharge node")
+            self.sound.PlaySound("recharge1.mp3")
+            player.recharge()
             self.sound.CreateSound("recharge.mp3", "Your health has been recharged!")
             self.sound.PlaySound("recharge.mp3")
-            player.recharge()
+            
             print('you are recharged!')
             self.beenVisited = True
             
