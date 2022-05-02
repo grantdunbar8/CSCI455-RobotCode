@@ -1,7 +1,7 @@
 from time import sleep
 from Methods2 import *
 from TextToSpeechManager import TextToSpeech
-import serial
+import serial, random
 
 class MoveTester:
     sound = TextToSpeech()
@@ -92,7 +92,8 @@ class MoveTester:
     def armDefaultAttack(self):
         self.methods.positionMotor(5, 10000)
         sleep(.5)
-        self.sound.CreateSound("spell.mp3", 'Expelliarmus')
+        spells = ['Expelliarmus', 'Petrificus Totalus', 'Stupefy', 'Incendio', 'Expecto patronum']
+        self.sound.CreateSound("spell.mp3", random.choice(spells))
         self.sound.PlaySound("spell.mp3")
         self.methods.positionMotor(7, 6000)
         self.methods.positionMotor(5, 8000)
@@ -104,7 +105,8 @@ class MoveTester:
         self.methods.positionMotor(2, 4000)
         self.methods.positionMotor(5, 10000)
         sleep(.5)
-        self.sound.CreateSound("spell.mp3", 'Avada Kedavra')
+        spells = ['Avada Kedavra', 'Crucio', 'Imperio']
+        self.sound.CreateSound("spell.mp3", random.choice(spells))
         self.sound.PlaySound("spell.mp3")
         self.methods.positionMotor(2, 6000)
         self.methods.positionMotor(7, 6000)
@@ -117,7 +119,8 @@ class MoveTester:
         self.methods.positionMotor(2, 4000)
         self.methods.positionMotor(5, 10000)
         sleep(.5)
-        self.sound.CreateSound("spell.mp3", 'Lumos')
+        spells = ["i can't aim", 'where did they go', 'ah shii', 'oops that missed']
+        self.sound.CreateSound("spell.mp3", random.choice(spells))
         self.sound.PlaySound("spell.mp3")
         self.methods.positionMotor(7, 6000)
         self.methods.positionMotor(5, 8000)
