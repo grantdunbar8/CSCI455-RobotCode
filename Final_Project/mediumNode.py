@@ -1,10 +1,12 @@
 import random
 from TextToSpeechManager import TextToSpeech
+from MicrophoneManager import Mic
 
 class MediumNode:
     hitPoints = 0
     numEnemy = 0
     sound = TextToSpeech()
+    mic = Mic()
 
     def __init__(self):
         print('medium node created')
@@ -22,22 +24,30 @@ class MediumNode:
         self.sound.PlaySound("player.mp3")
         print('player current health is ' + str(player.hp))
 
-        user = input('run or fight: ')
+        #user = input('run or fight: ')
         #start fight animation
-        if(user == 'run'):
+        words = ''
+        while words == '':
+            words = self.mic.Listen()
+
+        if('run' in words):
             print('trying to run away')
             chance = random.randint(1, 4)
             if(chance == 1):
                 print('run failed, you must fight')
+                self.sound.CreateSound("runFail.mp3", "You tried to run but failed, you must fight")
+                self.sound.PlaySound("runFail.mp3")
                 self.fight(player)
             else:
                 #maybe run animation
                 #stop fight animation
                 print('successfully ran to new node')
+                self.sound.CreateSound("runSuccess.mp3", "You successfully ran away!")
+                self.sound.PlaySound("runSuccess.mp3")
                 player.pX = random.randint(0,4)
                 player.pY = random.randint(0,4)
                 print('player new position is ' + str(player.pX) + ' ' + str(player.pY))
-        else:
+        elif('fight' in words):
             self.fight(player)
 
     def fight(self, player):
