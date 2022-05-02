@@ -1,7 +1,11 @@
 import random
+from TextToSpeechManager import TextToSpeech
+
 class EasyNode:
     hitPoints = 0
     numEnemy = 0
+    sound = TextToSpeech()
+
     def __init__(self):
         print('easy node created')
         self.numEnemy = random.randint(3,6)

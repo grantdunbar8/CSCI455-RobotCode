@@ -1,7 +1,9 @@
 import random
+from TextToSpeechManager import TextToSpeech
 
 class HardNode:
     hitPoints = 0
+    sound = TextToSpeech()
 
     def __init__(self):
         print('boss node created')

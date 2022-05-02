@@ -1,8 +1,10 @@
 from time import sleep
 from Methods2 import *
+from TextToSpeechManager import TextToSpeech
 import serial
 
 class MoveTester:
+    sound = TextToSpeech()
 
     def __init__(self):
         usb = serial.Serial('/dev/ttyACM0')
