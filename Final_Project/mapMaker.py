@@ -276,7 +276,7 @@ while('exit' not in words):
             
         else:
             print('can not go that way')
-    if('east' in words):
+    elif('east' in words):
         if(currentPosition.ableEast()):
             player.pX+=1
             player.moves+=1
@@ -288,7 +288,7 @@ while('exit' not in words):
             
         else:
             print('can not go that way')
-    if('north' in words):
+    elif('north' in words):
         if(currentPosition.ableNorth()):
             player.pY-=1
             player.moves+=1
@@ -297,7 +297,7 @@ while('exit' not in words):
             player.movePlayer('north')
         else:
             print('can not go that way')
-    if('south' in words):
+    elif('south' in words):
         if(currentPosition.ableSouth()):
             player.pY+=1
             player.moves+=1
@@ -306,6 +306,9 @@ while('exit' not in words):
             player.movePlayer('south')
         else:
             print('can not go that way')
+    else:
+        sound.CreateSound("noSound.mp3", "no direction, listening for direction")
+        sound.PlaySound("noSound.mp3")
     
 
 

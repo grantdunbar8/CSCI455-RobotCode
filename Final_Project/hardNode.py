@@ -45,7 +45,7 @@ class HardNode:
             self.hitPoints -= player.attack()
             if(self.hitPoints > 0):
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
-                self.nodeAction(player)
+            self.nodeAction(player)
         else:
             self.sound.CreateSound("win.mp3", "congradulations, you beat the boss, you got a health boost of 80")
             self.sound.PlaySound("win.mp3")

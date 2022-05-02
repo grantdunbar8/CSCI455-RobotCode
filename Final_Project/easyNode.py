@@ -76,7 +76,7 @@ class EasyNode:
                     self.numEnemy = self.hitPoints/10
                 else:
                     self.numEnemy = self.hitPoints/10 + 1
-                self.nodeAction(player)
+            self.nodeAction(player)
         else:
             self.sound.CreateSound("win.mp3", "you beat the easy ememies, you got a health boost of 20")
             self.sound.PlaySound("win.mp3")

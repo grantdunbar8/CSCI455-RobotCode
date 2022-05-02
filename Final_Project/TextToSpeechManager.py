@@ -19,7 +19,7 @@ class TextToSpeech:
         if exists == True:
             os.system("mpg123 " + fileName)
             print("GOT HERE 1")
-            self.RemoveSound(fileName + '.mp3')
+            self.RemoveSound(fileName)
             
         else:
             print("ERROR: File does not exist.")
