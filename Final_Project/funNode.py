@@ -20,12 +20,14 @@ class FunNode:
             self.sound.PlaySound("hpBoost.mp3")
             player.boostHealth()
             player.mover.boostMove()
+            self.beenVisited = True
         elif(not self.beenVisited):
             print('attack boost')
             self.sound.CreateSound("attBoost.mp3", "You got and attack power boost!")
             self.sound.PlaySound("attBoost.mp3")
             player.boostAttack()
             player.mover.boostMove()
+            self.beenVisited = True
         else:
             print('you have already visited this fun node')
             self.sound.CreateSound("alreadyHere.mp3", "You've already been here")
