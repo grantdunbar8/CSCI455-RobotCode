@@ -33,6 +33,8 @@ class MediumNode:
             self.beenHere = True
             #user = input('run or fight: ')
             #start fight animation
+            self.sound.CreateSound("runFight.mp3", "Do you want to run or fight?")
+            self.sound.PlaySound("runFight.mp3")
             words = ''
             while words == '':
                 words = self.mic.Listen()

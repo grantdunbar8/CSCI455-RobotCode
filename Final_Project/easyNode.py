@@ -32,7 +32,7 @@ class EasyNode:
             self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
             self.sound.PlaySound("player.mp3")
             print('player current health is ' + str(player.hp))
-            user = input('run or fight: ')
+            #user = input('run or fight: ')
             self.sound.CreateSound("runFight.mp3", "Do you want to run or fight?")
             self.sound.PlaySound("runFight.mp3")
             words = ''

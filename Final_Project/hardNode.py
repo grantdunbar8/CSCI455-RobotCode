@@ -26,6 +26,8 @@ class HardNode:
             print('player current health is ' + str(player.hp))
             
             #user = input('run or fight: ')
+            self.sound.CreateSound("runFight.mp3", "Do you want to run or fight?")
+            self.sound.PlaySound("runFight.mp3")
             words = ''
             while words == '':
                 words = self.mic.Listen()
