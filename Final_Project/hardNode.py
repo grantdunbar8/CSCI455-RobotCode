@@ -6,6 +6,7 @@ class HardNode:
     hitPoints = 0
     sound = TextToSpeech()
     mic = Mic()
+    beenHere = False
 
     def __init__(self):
         print('boss node created')
@@ -14,37 +15,41 @@ class HardNode:
 
 
     def nodeAction(self, player):
-        #boss fight animation
-        self.sound.CreateSound("enemy.mp3", "this is a boss battle")
-        self.sound.PlaySound("enemy.mp3")
-        print('this is a boss battle')
+        if(self.hitPoints > 0):
+            #boss fight animation
+            self.sound.CreateSound("enemy.mp3", "this is a boss battle")
+            self.sound.PlaySound("enemy.mp3")
+            print('this is a boss battle')
 
-        self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
-        self.sound.PlaySound("player.mp3")
-        print('player current health is ' + str(player.hp))
-        
-        #user = input('run or fight: ')
-        words = ''
-        while words == '':
-            words = self.mic.Listen()
+            self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
+            self.sound.PlaySound("player.mp3")
+            print('player current health is ' + str(player.hp))
+            
+            #user = input('run or fight: ')
+            words = ''
+            while words == '':
+                words = self.mic.Listen()
 
-        if('run' in words):
-            print('trying to run away')
-            chance = random.randint(1, 4)
-            if(chance == 1):
-                print('run failed, you must fight')
-                self.sound.CreateSound("runFail.mp3", "You tried to run but failed, you must fight")
-                self.sound.PlaySound("runFail.mp3")
+            if('run' in words):
+                print('trying to run away')
+                chance = random.randint(1, 4)
+                if(chance == 1):
+                    print('run failed, you must fight')
+                    self.sound.CreateSound("runFail.mp3", "You tried to run but failed, you must fight")
+                    self.sound.PlaySound("runFail.mp3")
+                    self.fight(player)
+                else:
+                    print('successfully ran to new node')
+                    self.sound.CreateSound("runSuccess.mp3", "You successfully ran away!")
+                    self.sound.PlaySound("runSuccess.mp3")
+                    player.pX = random.randint(0,4)
+                    player.pY = random.randint(0,4)
+                    print('player new position is ' + str(player.pX) + ' ' + str(player.pY))
+            elif('fight' in words):
                 self.fight(player)
-            else:
-                print('successfully ran to new node')
-                self.sound.CreateSound("runSuccess.mp3", "You successfully ran away!")
-                self.sound.PlaySound("runSuccess.mp3")
-                player.pX = random.randint(0,4)
-                player.pY = random.randint(0,4)
-                print('player new position is ' + str(player.pX) + ' ' + str(player.pY))
-        elif('fight' in words):
-            self.fight(player)
+        else:
+            self.sound.CreateSound("beat.mp3", "You have already conquered this boss")
+            self.sound.PlaySound("beat.mp3")
 
     def fight(self, player):
         if self.hitPoints > 0:

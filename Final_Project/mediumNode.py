@@ -7,6 +7,7 @@ class MediumNode:
     numEnemy = 0
     sound = TextToSpeech()
     mic = Mic()
+    beenHere = False
 
     def __init__(self):
         print('medium node created')
@@ -16,39 +17,48 @@ class MediumNode:
 
 
     def nodeAction(self, player):
-        self.sound.CreateSound("enemy.mp3", 'this is a medium battle - there are ' + str(self.numEnemy) + ' enemies')
-        self.sound.PlaySound("enemy.mp3")
-        print('this is a medium battle - there are ' + str(self.numEnemy) + ' enemies')
+        if(self.hitPoints > 0):
+            if not self.beenHere:
+                self.sound.CreateSound("enemy.mp3", 'this is an medium battle - there are ' + str(self.numEnemy) + ' enemies')
+            elif self.hitPoints > 0:
+                self.sound.CreateSound("enemy.mp3", 'there are ' + str(self.numEnemy) + ' medium enemies remaining')
+            
+            self.sound.PlaySound("enemy.mp3")
+            print('this is a medium battle - there are ' + str(self.numEnemy) + ' enemies')
 
-        self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
-        self.sound.PlaySound("player.mp3")
-        print('player current health is ' + str(player.hp))
+            self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
+            self.sound.PlaySound("player.mp3")
+            print('player current health is ' + str(player.hp))
 
-        #user = input('run or fight: ')
-        #start fight animation
-        words = ''
-        while words == '':
-            words = self.mic.Listen()
+            self.beenHere = True
+            #user = input('run or fight: ')
+            #start fight animation
+            words = ''
+            while words == '':
+                words = self.mic.Listen()
 
-        if('run' in words):
-            print('trying to run away')
-            chance = random.randint(1, 4)
-            if(chance == 1):
-                print('run failed, you must fight')
-                self.sound.CreateSound("runFail.mp3", "You tried to run but failed, you must fight")
-                self.sound.PlaySound("runFail.mp3")
+            if('run' in words):
+                print('trying to run away')
+                chance = random.randint(1, 4)
+                if(chance == 1):
+                    print('run failed, you must fight')
+                    self.sound.CreateSound("runFail.mp3", "You tried to run but failed, you must fight")
+                    self.sound.PlaySound("runFail.mp3")
+                    self.fight(player)
+                else:
+                    #maybe run animation
+                    #stop fight animation
+                    print('successfully ran to new node')
+                    self.sound.CreateSound("runSuccess.mp3", "You successfully ran away!")
+                    self.sound.PlaySound("runSuccess.mp3")
+                    player.pX = random.randint(0,4)
+                    player.pY = random.randint(0,4)
+                    print('player new position is ' + str(player.pX) + ' ' + str(player.pY))
+            elif('fight' in words):
                 self.fight(player)
-            else:
-                #maybe run animation
-                #stop fight animation
-                print('successfully ran to new node')
-                self.sound.CreateSound("runSuccess.mp3", "You successfully ran away!")
-                self.sound.PlaySound("runSuccess.mp3")
-                player.pX = random.randint(0,4)
-                player.pY = random.randint(0,4)
-                print('player new position is ' + str(player.pX) + ' ' + str(player.pY))
-        elif('fight' in words):
-            self.fight(player)
+        else:
+            self.sound.CreateSound("beat.mp3", "You have already beat this medium enemy")
+            self.sound.PlaySound("beat.mp3")
 
     def fight(self, player):
         if self.hitPoints > 0:
@@ -61,8 +71,10 @@ class MediumNode:
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
                 if(self.hitPoints % 20 == 0):
                     self.numEnemy = self.hitPoints/20
+                    self.numEnemy = int(self.numEnemy)
                 else:
                     self.numEnemy = self.hitPoints/20 + 1
+                    self.numEnemy = int(self.numEnemy)
             self.nodeAction(player)
         else:
             self.sound.CreateSound("win.mp3", "you beat the medium enemies, you got a health boost of 50")

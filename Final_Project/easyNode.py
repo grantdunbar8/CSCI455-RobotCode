@@ -58,7 +58,7 @@ class EasyNode:
                 self.fight(player)
         
         else:
-            self.sound.CreateSound("beat.mp3", "You have already beat this enemy")
+            self.sound.CreateSound("beat.mp3", "You have already beat this easy enemy")
             self.sound.PlaySound("beat.mp3")
 
             # if(user == 'run'):
