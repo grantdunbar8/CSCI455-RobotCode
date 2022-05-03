@@ -84,6 +84,15 @@ class Player:
         else:
             self.hp+=boost
 
+    def coffeMover(self):
+        self.mover.coffeMove()
+
+    def trickyMover(self):
+        self.mover.trickyMove()
+
+    def finishMover(self):
+        self.mover.finishMove()
+
     def hintDir(self):
         if(self.pX == self.kX and self.pY < self.kY):
             return('south')

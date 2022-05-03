@@ -71,7 +71,7 @@ class MoveTester:
     # Motor 9: Hand rotate
     # Motor 10: Hand close and open
 
-    def armReady(self):   #Straightens arm, is about 30 degrees from straight down
+    def armReady(self):  
         self.methods.positionMotor(6, 6000)
         #sleep(1)
         self.methods.positionMotor(7, 4000)
@@ -185,4 +185,46 @@ class MoveTester:
         sleep(.1)
         self.armReady()
 
+    #look for wi-fi signal using wand
+    def coffeMove(self):
+        self.methods.positionMotor(7, 6000)
+        sleep(.1)
+        self.methods.positionMotor(5, 8000)
+        sleep(2)
+        self.methods.positionMotor(2, 4000)
+        sleep(2)
+        self.methods.positionMotor(2, 8000)
+        sleep(2)
+        self.methods.positionMotor(2, 6000)
+        sleep(2)
+        self.armReady()
 
+    def trickyMove(self):
+        self.methods.positionMotor(4, 4000)
+        self.methods.positionMotor(5, 8000)
+        sleep(.1)
+        self.methods.positionMotor(9, 5000)
+        sleep(.5)
+        self.methods.positionMotor(9, 7000)
+        sleep(.5)
+        self.methods.positionMotor(9, 5000)
+        sleep(.5)
+        self.methods.positionMotor(9, 6000)
+        sleep(.5)
+        self.armReady()
+
+    def finishMove(self):
+        self.methods.positionMotor(7, 6000)
+        self.methods.positionMotor(5, 12000)
+        sleep(2)
+        self.methods.positionMotor(7, 4000)
+        sleep(1)
+        self.methods.positionMotor(7, 6000)
+        self.methods.positionMotor(5, 12000)
+        sleep(2)
+        self.methods.positionMotor(7, 4000)
+        sleep(1)
+        self.methods.positionMotor(7, 6000)
+        self.methods.positionMotor(5, 12000)
+        sleep(2)
+        self.armReady()

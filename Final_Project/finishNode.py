@@ -16,6 +16,7 @@ class FinishNode:
             print('you win!')
             self.sound.CreateSound("win.mp3", "Congrats, you have won the game!")
             self.sound.PlaySound("win.mp3")
+            player.finishMover()
             sys.exit(0)
         else:
             print('you need to find the key')
