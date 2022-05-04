@@ -30,6 +30,11 @@ class MediumNode:
             self.sound.PlaySound("player.mp3")
             print('player current health is ' + str(player.hp))
 
+            # Say what the toal HP of all living enemies is
+            self.sound.CreateSound("totalHP.mp3", 'enemies combined health is ' + str(self.hitPoints))
+            self.sound.PlaySound("totalHP.mp3")
+            print('enemies combined health is ' + str(self.hitPoints))
+
             self.beenHere = True
             #user = input('run or fight: ')
             #start fight animation
@@ -67,8 +72,20 @@ class MediumNode:
             hit = random.randint(0,20)
             print('enemy attacks ' + str(hit*self.numEnemy))
             player.takeDamage(hit*self.numEnemy)
+
+            # Say how much damage player took when hit
+            self.sound.CreateSound("playerHit.mp3", "I have sustained " + str(hit*self.numEnemy) + " damage")
+            self.sound.PlaySound("playerHit.mp3")
+            
             print('player hp is ' + str(player.hp))
-            self.hitPoints -= player.attack()
+            
+            playersAttack = player.attack()
+            self.hitPoint -= playersAttack
+            #self.hitPoints -= player.attack()
+
+            # Say how much damage was dealt to the enemies
+            self.sound.CreateSound("enemyHit.mp3", "I did " + str(playersAttack) + " damage to the enemies")
+            
             if(self.hitPoints > 0):
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
                 if(self.hitPoints % 20 == 0):

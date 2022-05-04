@@ -24,6 +24,11 @@ class HardNode:
             self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
             self.sound.PlaySound("player.mp3")
             print('player current health is ' + str(player.hp))
+
+            # Say what the bosses current health is
+            self.sound.CreateSound("bossHP.mp3", 'boss current health is ' + str(self.hitPoints))
+            self.sound.PlaySound("bossHP.mp3")
+            print('boss current health is ' + str(self.hitPoints))
             
             #user = input('run or fight: ')
             self.sound.CreateSound("runFight.mp3", "Do you want to run or fight?")
@@ -58,8 +63,20 @@ class HardNode:
             hit = random.randint(0,50)
             print('enemy attacks ' + str(hit))
             player.takeDamage(hit)
+
+            # Say how much damage the player took when hit
+            self.sound.CreateSound("playerHit.mp3", "I have sustained " + str(hit) + " damage")
+            self.sound.PlaySound("playerHit.mp3")
+            
             print('player hp is ' + str(player.hp))
-            self.hitPoints -= player.attack()
+
+            playersAttack = player.attack()
+            self.hitPoint -= playersAttack
+            #self.hitPoints -= player.attack()
+            
+            # Say how much damage was dealt to the enemies
+            self.sound.CreateSound("enemyHit.mp3", "I did " + str(playersAttack) + " damage to the boss")
+            
             if(self.hitPoints > 0):
                 print('enemy remaining hitpoints ' + str(self.hitPoints))
             self.nodeAction(player)
