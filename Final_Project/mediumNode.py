@@ -94,9 +94,10 @@ class MediumNode:
                 else:
                     self.numEnemy = self.hitPoints/20 + 1
                     self.numEnemy = int(self.numEnemy)
-            self.nodeAction(player)
-        else:
-            self.sound.CreateSound("win.mp3", "you beat the medium enemies, you got a health boost of 50")
-            self.sound.PlaySound("win.mp3")
-            player.healthBoost(50)
-            print('you beat the enemy')
+            if self.hitPoints > 0:
+                self.nodeAction(player)    
+            else:
+                self.sound.CreateSound("win.mp3", "you beat the medium enemies, you got a health boost of 50")
+                self.sound.PlaySound("win.mp3")
+                player.healthBoost(50)
+                print('you beat the enemy')

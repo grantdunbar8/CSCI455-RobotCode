@@ -14,4 +14,5 @@ class StartNode:
         print('this is the start node')
         self.sound.CreateSound("startNode.mp3", "Welcome to the game!")
         self.sound.PlaySound("startNode.mp3")
+        player.begin()
         #start node animation

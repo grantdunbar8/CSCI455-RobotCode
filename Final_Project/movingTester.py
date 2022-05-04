@@ -79,6 +79,7 @@ class MoveTester:
         self.methods.positionMotor(8, 6000)
         #sleep(1)
         self.methods.positionMotor(9, 6000)
+        
         #sleep(1)
         # self.methods.positionMotor(10, 8000)
         

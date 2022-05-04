@@ -84,7 +84,7 @@ class Player:
         else:
             self.hp+=boost
 
-    def coffeMover(self):
+    def coffeeMover(self):
         self.mover.coffeMove()
 
     def trickyMover(self):
@@ -92,6 +92,9 @@ class Player:
 
     def finishMover(self):
         self.mover.finishMove()
+
+    def begin(self):
+        self.mover.armReady()
 
     def hintDir(self):
         if(self.pX == self.kX and self.pY < self.kY):

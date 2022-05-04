@@ -27,7 +27,7 @@ class EasyNode:
             self.sound.PlaySound("enemy.mp3")
             print('this is an easy battle - there are ' + str(self.numEnemy) + ' enemies')
 
-            beenHere = True
+            self.beenHere = True
 
             self.sound.CreateSound("player.mp3", 'player current health is ' + str(player.hp))
             self.sound.PlaySound("player.mp3")
@@ -108,11 +108,12 @@ class EasyNode:
                 else:
                     self.numEnemy = self.hitPoints/10 + 1
                     self.numEnemy = int(self.numEnemy)
-            self.nodeAction(player)
-        else:
-            self.sound.CreateSound("win.mp3", "you beat the easy ememies, you got a health boost of 20")
-            self.sound.PlaySound("win.mp3")
-            player.healthBoost(20)
-            print('you beat the enemy')
+            if self.hitPoints > 0:
+                self.nodeAction(player)
+            else:
+                self.sound.CreateSound("win.mp3", "you beat the easy ememies, you got a health boost of 20")
+                self.sound.PlaySound("win.mp3")
+                player.healthBoost(20)
+                print('you beat the enemy')
 
     

@@ -9,7 +9,7 @@ class Mic:
     #     self.life = life
     
     def Listen(self):
-        life = time.time() + 7
+        life = time.time() + 4
         print("Begin collection of mic data for " + str(life) + " seconds.")
         print("The time: " + str(time.time()) + " Life: " + str(life))
         while time.time() <= life:

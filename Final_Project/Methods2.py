@@ -99,7 +99,7 @@ class Methods:
         sys.exit(0)
             
     #centers body motors to position 6000
-    def center(self, event):
+    def center(self):
         self.robot.driveFB = 6000
         self.robot.waist = 6000
         self.robot.headLR = 6000

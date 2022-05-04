@@ -1,9 +1,11 @@
 import random
 from operator import contains
+import string
 from node import *
 from player import Player
 from MicrophoneManager import Mic
 from TextToSpeechManager import TextToSpeech
+from AnimationManager import AnimationManager
 
 map = []
 col0 = [Node(False, True, False, False), Node(False, True, False, True), Node(False, False, True, True), Node(False, True, True, False), Node(False, True, False, False)]
@@ -25,6 +27,7 @@ y = 0
 player = Player()
 mic = Mic()
 sound = TextToSpeech()
+screen = AnimationManager()
 
 #make start and finish node
 sx = 0
@@ -264,6 +267,10 @@ while('exit' not in words):
     #     words = 'something'
     print("GOT HERE: " + str(words) + "TYPE: " + str(type(words)))
     #user = input(':')
+    
+    words = words.lower()
+
+
     if('west' in words):
         if(currentPosition.ableWest()):
             player.pX-=1
@@ -271,6 +278,7 @@ while('exit' not in words):
             sound.CreateSound("goWest.mp3", "going west")
             sound.PlaySound("goWest.mp3")
             print("GOT HERE 2222")
+            screen.Moving();
             player.movePlayer('west')
             
             
