@@ -80,7 +80,7 @@ class MoveTester:
         #sleep(1)
         self.methods.positionMotor(9, 6000)
         #sleep(1)
-        self.methods.positionMotor(10, 8000)
+        # self.methods.positionMotor(10, 8000)
         
         sleep(1)
 
@@ -192,17 +192,20 @@ class MoveTester:
         self.methods.positionMotor(5, 8000)
         sleep(2)
         self.methods.positionMotor(2, 4000)
+        self.methods.positionMotor(5, 8000)
         sleep(2)
         self.methods.positionMotor(2, 8000)
+        self.methods.positionMotor(5, 8000)
         sleep(2)
         self.methods.positionMotor(2, 6000)
+        self.methods.positionMotor(5, 8000)
         sleep(2)
         self.armReady()
 
     def trickyMove(self):
         self.methods.positionMotor(4, 4000)
         self.methods.positionMotor(5, 8000)
-        sleep(.1)
+        sleep(1)
         self.methods.positionMotor(9, 5000)
         sleep(.5)
         self.methods.positionMotor(9, 7000)
@@ -215,7 +218,7 @@ class MoveTester:
 
     def finishMove(self):
         self.methods.positionMotor(7, 6000)
-        self.methods.positionMotor(5, 12000)
+        self.methods.positionMotor(5, 11000)
         sleep(2)
         self.methods.positionMotor(7, 4000)
         sleep(1)
@@ -225,6 +228,7 @@ class MoveTester:
         self.methods.positionMotor(7, 4000)
         sleep(1)
         self.methods.positionMotor(7, 6000)
-        self.methods.positionMotor(5, 12000)
+        self.methods.positionMotor(5, 11000)
         sleep(2)
         self.armReady()
+
