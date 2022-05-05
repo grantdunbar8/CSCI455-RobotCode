@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter.ttk import *
 import _thread, threading
 from PIL import ImageTk, Image
+import time
 
 master = Tk()
 img = None
@@ -22,6 +23,9 @@ class UI:
     def OtherMethod(self):
         for i in range(0, 10):
             print(i)
+        time.sleep(4)
+        instance = ChangeUI()
+        ChangeUI.ChangeImage("", "face2.png")
         
 class ChangeUI:
     def __init__(self):
