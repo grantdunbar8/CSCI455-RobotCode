@@ -1,7 +1,6 @@
 
-#from MicrophoneManager import Mic
-#from TextToSpeechManager import TextToSpeech
-#from curses import window
+from MicrophoneManager import Mic
+from TextToSpeechManager import TextToSpeech
 from time import sleep
 from kivy.app import App
 from AnimationManager import WindowApp, Talking, TakeDamage
@@ -32,9 +31,11 @@ class StartNode:
 
     def nodeAction(self, player):
         print('this is the start node')
+        self.sound.CreateSound("startNode.mp3", "Welcome to the game!")
         
+        self.sound.PlaySound("startNode.mp3")
         
         #start node animation
 
-window = Talking()
-window.run()
+#window = Talking()
+#window.run()
