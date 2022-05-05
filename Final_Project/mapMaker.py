@@ -5,7 +5,7 @@ from node import *
 from player import Player
 from MicrophoneManager import Mic
 from TextToSpeechManager import TextToSpeech
-from AnimationManager import AnimationManager
+from AnimationManager import WindowApp
 
 map = []
 col0 = [Node(False, True, False, False), Node(False, True, False, True), Node(False, False, True, True), Node(False, True, True, False), Node(False, True, False, False)]
@@ -251,6 +251,9 @@ while not t1:
     t1 = tricky(map, player)
 
 print('all nodes have been initialized, 1 start, 1 finish, 3 recharge, 2 coffee, 6 easy, 5 medium, 3 hard, 2 fun, and 1 tricky')
+
+
+window = WindowApp().run()
 
 user = ''
 words = ''

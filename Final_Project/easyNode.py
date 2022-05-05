@@ -85,6 +85,7 @@ class EasyNode:
         if self.hitPoints > 0:
             hit = random.randint(0,5)
             print('enemy attacks ' + str(hit*self.numEnemy))
+            
             player.takeDamage(hit*self.numEnemy)
 
             # Say how much damage player took when hit
