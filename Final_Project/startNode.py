@@ -3,7 +3,7 @@ from MicrophoneManager import Mic
 from TextToSpeechManager import TextToSpeech
 from time import sleep
 from kivy.app import App
-from AnimationManager import WindowApp, Talking, TakeDamage
+#from AnimationManager import WindowApp, Talking, TakeDamage
 from kivy.clock import Clock
 import threading, _thread
 
@@ -12,8 +12,8 @@ import threading, _thread
 class StartNode:
     def __init__(self):
         self.sound = TextToSpeech()
-        self.window = Talking()
-        self.actionRunning = True
+        #self.window = Talking()
+        #self.actionRunning = True
         print('start node created')
 
     def firstThread(self):
